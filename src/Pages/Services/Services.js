@@ -14,7 +14,7 @@ const Services = () => {
                         </h1>
                         <p>Welcome Finvision</p>
                         </div>
-                        <div className="section-info">
+                        <div className="section-info ">
                             <p>
                             It's not just about your money, it's about your life. Finvision professionals understand how complex your life and financial situation can be, and we're here to help. Our team of certified financial planners can help you get the right information so you can make the best decisions.
                             </p>
