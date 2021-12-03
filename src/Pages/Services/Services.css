@@ -1,0 +1,10 @@
+.section-header {
+  text-align: left;
+}
+.section-header h1 {
+  font-weight: 700;
+  font-size: 85px;
+}
+.section-header p {
+  letter-spacing: 10px;
+}

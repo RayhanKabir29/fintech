@@ -3,7 +3,7 @@ const Banner = () => {
     return (
         <div
       style={{
-         backgroundImage: `url("https://i.ibb.co/wdH7VQv/main-banner.jpg")`,backgroundRepeat: 'no-repeat',backgroundSize: 'cover',backgroundPosition: 'center', padding:'300px'
+         backgroundImage: `url("https://i.ibb.co/wdH7VQv/main-banner.jpg")`,backgroundRepeat: 'no-repeat',backgroundSize: 'cover',backgroundPosition: 'center', height: '100vh'
       }}>
        
       </div>
