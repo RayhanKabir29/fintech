@@ -1,6 +1,7 @@
 import React from 'react';
 import AppSection from '../../AppSection/AppSection';
 import Banner from '../../Banner/Banner';
+import Information from '../../Information/Information';
 import News from '../../News/News';
 import Quation from '../../Quation/Quation';
 import Services from '../../Services/Services';
@@ -20,6 +21,7 @@ const Home = () => {
             <Quation/>
             <Work/>
             <Team/>
+            <Information/>
             <Footer/>
         </div>
     );
