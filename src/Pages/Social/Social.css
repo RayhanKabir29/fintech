@@ -1,0 +1,15 @@
+.social-section {
+  background-color: #1c3b4e;
+  padding: 40px 0;
+}
+.social {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  text-align: center;
+  color: aliceblue;
+}
+@media screen and (max-width: 360px) {
+  .social h2 {
+    display: none;
+  }
+}

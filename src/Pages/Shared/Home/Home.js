@@ -6,6 +6,7 @@ import News from '../../News/News';
 import NewsLetter from '../../NewsLettet/NewsLetter';
 import Quation from '../../Quation/Quation';
 import Services from '../../Services/Services';
+import Social from '../../Social/Social';
 import Team from '../../Team/Team';
 import Work from '../../Work/Work';
 import Footer from '../Footer/Footer';
@@ -24,6 +25,7 @@ const Home = () => {
             <Team/>
             <Information/>
             <NewsLetter/>
+            <Social/>
             <Footer/>
         </div>
     );
