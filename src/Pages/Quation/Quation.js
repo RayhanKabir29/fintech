@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 import { useForm } from "react-hook-form";
 import './Quation.css';
 
@@ -18,13 +18,15 @@ const Quation = () => {
                     </Row>
                     <Row>
                        <div className="quato-form">
-                        <form onSubmit={handleSubmit(onSubmit)}>
-                            <input {...register("name", { required: true})} placeholder="Your Name"/>
-                            <input {...register("email", { required: true})} placeholder="Your Email"/>
-                            <input type="text" {...register("phone", { required: true})} placeholder="Phone No"/>
-                            <textarea className="my-5" type="text" {...register("message")} placeholder="Your Message"/>
-                            <input  className="submit-btn" type="submit" />
+                            <Col xs={12} md={12}>
+                            <form onSubmit={handleSubmit(onSubmit)}>
+                                <input {...register("name", { required: true})} placeholder="Your Name"/>
+                                <input {...register("email", { required: true})} placeholder="Your Email"/>
+                                <input type="text" {...register("phone", { required: true})} placeholder="Phone No"/>
+                                <textarea className="my-5" type="text" {...register("message")} placeholder="Your Message"/>
+                                <input  className="submit-btn" type="submit" />
                             </form>
+                            </Col>
                        </div>
                     </Row>
                 </Container>

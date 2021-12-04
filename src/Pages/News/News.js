@@ -18,8 +18,19 @@ const News = () => {
                     </div>   
                 </Row>
                 <Row>
-                   
-                        <Col xs={6} md={4}>
+                    <Col xs={12} md={4}>
+                        <Card>
+                            <Card.Img variant="top" src="" />
+                                <Card.Body>
+                                    <Card.Title>Card Title</Card.Title>
+                                    <Card.Text>
+                                    Some quick example text to build on the card title and make up the bulk of
+                                    the card's content.
+                                </Card.Text>
+                            </Card.Body>
+                        </Card>  
+                    </Col>
+                        <Col xs={12} md={4}>
                             <Card>
                                 <Card.Img variant="top" src="" />
                                 <Card.Body>
@@ -31,7 +42,7 @@ const News = () => {
                                 </Card.Body>
                             </Card>  
                         </Col>
-                        <Col xs={6} md={4}>
+                        <Col xs={12} md={4}>
                             <Card>
                                 <Card.Img variant="top" src="" />
                                 <Card.Body>
@@ -42,20 +53,7 @@ const News = () => {
                                     </Card.Text>
                                 </Card.Body>
                             </Card>  
-                        </Col>
-                        <Col xs={6} md={4}>
-                            <Card>
-                                <Card.Img variant="top" src="" />
-                                <Card.Body>
-                                    <Card.Title>Card Title</Card.Title>
-                                    <Card.Text>
-                                    Some quick example text to build on the card title and make up the bulk of
-                                    the card's content.
-                                    </Card.Text>
-                                </Card.Body>
-                            </Card>  
-                        </Col>
-                    
+                        </Col> 
                 </Row>
             </Container>
         </div>
