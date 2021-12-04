@@ -6,3 +6,21 @@
 .quation-section h6 {
   letter-spacing: 10px;
 }
+.quato-form input {
+  width: 417px;
+  margin-right: 15px;
+  padding: 20px;
+}
+.quato-form input:last-child {
+  margin-right: 0px !important;
+}
+.quato-form textarea {
+  width: 100%;
+  padding: 30px;
+  height: 200px;
+}
+.submit-btn {
+  width: 300px !important;
+  background: transparent;
+  color: #fff;
+}
