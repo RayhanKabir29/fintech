@@ -4,6 +4,7 @@ import Banner from '../../Banner/Banner';
 import News from '../../News/News';
 import Quation from '../../Quation/Quation';
 import Services from '../../Services/Services';
+import Team from '../../Team/Team';
 import Work from '../../Work/Work';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
@@ -18,6 +19,7 @@ const Home = () => {
             <AppSection/>
             <Quation/>
             <Work/>
+            <Team/>
             <Footer/>
         </div>
     );

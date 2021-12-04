@@ -17,17 +17,23 @@ const Work = () => {
                         <Col xs={12} md={4} className="first-step">
                             <h1>Step 1</h1>
                             <h4>Personal Interview</h4>
+                            <a href="#">
                             <h5>icon</h5>
+                            </a>
                         </Col>
                         <Col xs={12} md={4} className="second-step">
                             <h1>Step 2</h1>
                             <h4>Engagement</h4>
+                            <a href="#">
                             <h5>icon</h5>
+                            </a>
                         </Col>
                         <Col xs={12} md={4} className="third-step">
                             <h1>Step 3</h1>
                             <h4>Plan Maintanence</h4>
+                            <a href="#">
                             <h5>icon</h5>
+                            </a>
                         </Col>
                     </Row>
                 </Container>

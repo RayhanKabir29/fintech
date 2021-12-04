@@ -1,0 +1,11 @@
+.team-member-info {
+  background-color: #103045;
+  color: gold;
+  height: 330px;
+  padding: 50px;
+}
+.team-member-info h4 {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 400;
+}
