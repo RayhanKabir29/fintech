@@ -1,13 +1,21 @@
 import React from 'react';
+import { Col, Container, Row } from 'react-bootstrap';
 import './Banner.css';
 
 const Banner = () => {
     return (
       <div>
        <div className="banner-section">
-         <div className="banner-img">
-            <img src="https://i.ibb.co/Dr14nwv/bannerimg.png" alt="" className="img-fluid"/>
-         </div>
+         <Container>
+           <Row>
+            <Col md={4} xs={12}>
+              <h1>Image</h1>
+            </Col>
+            <Col md={8} xs={12}>
+              <p>text</p>
+            </Col>
+           </Row>
+         </Container>
        </div>
       </div>
     );
