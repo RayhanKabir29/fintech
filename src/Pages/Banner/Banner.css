@@ -1,2 +1,12 @@
-.banner-section {
+body {
+  background: #f2f2f2;
+}
+
+.banner {
+  background: #fff;
+
+  border-radius: 5px;
+}
+.banner-btn {
+  justify-content: space-between;
 }
