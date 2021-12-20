@@ -3,20 +3,16 @@
 }
 .work-step h5 {
   margin: 0 auto;
-  height: 60px;
   line-height: 50px;
   width: 60px;
   border-radius: 51%;
   border: 1px solid gold;
 }
-.first-step {
-  padding: 200px 0px;
-  border-left: 1px solid gray;
-}
+.first-step,
 .third-step {
   padding: 200px 0px;
-  border-right: 1px solid gray;
 }
+
 .second-step {
   padding: 200px 0px;
   background-color: #ffc011;

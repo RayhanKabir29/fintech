@@ -1,5 +1,6 @@
 import React from 'react';
-import { Button, Col, Container, Row } from 'react-bootstrap';
+import { Button, Col, Container, Row, Card } from 'react-bootstrap';
+
 import CPA from '../../images/CPA.jpg';
 import TAB from '../../images/Tpb-Logopng.png';
 import './Banner.css';
@@ -9,6 +10,7 @@ const Banner = () => {
       <div>
        <div className="banner-section">
          <Container className='banner py-3'>
+           <div className="banner-top">
            <Row>
             <Col md={4} sm={12}>
              <div className="banner-img d-flex">
@@ -32,6 +34,8 @@ const Banner = () => {
               </Row>
             </Col>
            </Row>
+           </div>
+         
          </Container>
        </div>
       </div>
