@@ -4,21 +4,20 @@ import NewsLetter from '../../NewsLettet/NewsLetter';
 import Quation from '../../Quation/Quation';
 import Services from '../../Services/Services';
 import Social from '../../Social/Social';
+import TaxTable from '../../TaxTable/TaxTable';
 import Work from '../../Work/Work';
-import Footer from '../Footer/Footer';
-import Header from '../Header/Header';
 
 const Home = () => {
     return (
         <div>
-            <Header/>
             <Banner/>
             <Services/>
+            <TaxTable/>
             <Work/>
             <Quation/>
             <NewsLetter/>
             <Social/>
-            <Footer/>
+            
         </div>
     );
 };

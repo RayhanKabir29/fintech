@@ -1,3 +1,6 @@
+.service {
+  background: #f2f2f2;
+}
 .section-header {
   text-align: left;
 }
@@ -9,5 +12,12 @@
   letter-spacing: 10px;
 }
 .section-info {
-  text-align: left;
+  width: 70%;
+  margin: 0 auto;
+}
+.card-footer {
+  margin: 0 auto;
+  background-color: rgba(0, 0, 0, 0) !important;
+  border-top: none !important;
+  padding: 2rem 1rem !important;
 }
