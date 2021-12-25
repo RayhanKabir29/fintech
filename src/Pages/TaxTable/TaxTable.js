@@ -85,9 +85,34 @@ const TaxTable = () => {
                             <td>-</td>
                             <td>-</td>
                             </tr>
+                            <tr>
+                            <td rowSpan={4}></td>
+                            <td rowSpan={4}><div className="table-footer text-center">
+                            <p>From</p> <p>$ 77</p> 
+                            <p>(Including GST)</p>
+                            </div></td>
+                            <td rowSpan={4}><div className="table-footer text-center">
+                            <p>From</p> <p>$ 110</p> 
+                            <p>(Including GST)</p>
+                            </div></td>
+                            <td rowSpan={4}><div className="table-footer text-center">
+                            <p>From</p> <p>$ 125</p> 
+                            <p>(Including GST)</p>
+                            </div></td>
+                            <td rowSpan={4}><div className="table-footer text-center">
+                            <p>From</p> <p>$ 660</p> 
+                            <p>(Including GST)</p>
+                            </div></td>
+                            </tr>
+                            
                         </tbody>
                         </Table>
                   </Col>
+                </Row>
+                <Row>
+                    <div className="table-bottom mt-3">
+                        <h4>Note : Our Corporate Tax Pack of $990 includes Directors Individual Returns </h4>
+                    </div>
                 </Row>
             </Container>
         </div>

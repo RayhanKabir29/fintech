@@ -1,5 +1,6 @@
 import React from 'react';
 import Banner from '../../Banner/Banner';
+import Choose from '../../Choose/Choose';
 import NewsLetter from '../../NewsLettet/NewsLetter';
 import Quation from '../../Quation/Quation';
 import Services from '../../Services/Services';
@@ -15,6 +16,7 @@ const Home = () => {
             <Services/>
             <TaxTable/>
             <Work/>
+            <Choose/>
             <Testimonial/>
             <Quation/>
             <NewsLetter/>
