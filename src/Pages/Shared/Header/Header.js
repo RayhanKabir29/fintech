@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container,Nav, Navbar } from 'react-bootstrap';
 import { HashLink } from 'react-router-hash-link';
+import logo from '../../../images/logo.png';
 import './Header.css';
 
 const Header = () => {
@@ -8,7 +9,7 @@ const Header = () => {
         <>
             <Navbar sticky="top" bg="light" variant="light" collapseOnSelect expand="lg">
             <Container>
-                    <Navbar.Brand as ={HashLink} to="/home#home"><span style ={{color: 'black'}}>GTAX</span></Navbar.Brand>
+                    <Navbar.Brand as ={HashLink} to="/home#home"><img src={logo} alt="logo" className='img-fluid' style ={{width: '120px'}}/></Navbar.Brand>
                     <Navbar.Toggle />
                     <Navbar.Collapse className="justify-content-end">
                     <Nav.Link as ={HashLink} to="/home#home">Home</Nav.Link>
