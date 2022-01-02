@@ -10,7 +10,7 @@ const Footer = () => {
                     <Row>
                         <Col xs={12} md={6}>
                             <div className="footer-left">
-                                <h1>FIN<span style={{color:'#FFC412'}}>VISION</span></h1>
+                                <h1>Global <span style={{color:'#FFC412'}}>Tax Online</span></h1>
                             </div>
                         </Col>
                         <Col xs={12} md={6}>
