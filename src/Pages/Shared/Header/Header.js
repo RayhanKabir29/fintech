@@ -7,7 +7,7 @@ import './Header.css';
 const Header = () => {
     return (
         <>
-            <Navbar sticky="top" bg="light" variant="light" collapseOnSelect expand="lg">
+            <Navbar sticky="top"  collapseOnSelect expand="lg">
             <Container>
                     <Navbar.Brand as ={HashLink} to="/home#home"><img src={logo} alt="logo" className='img-fluid' style ={{width: '120px'}}/></Navbar.Brand>
                     <Navbar.Toggle />

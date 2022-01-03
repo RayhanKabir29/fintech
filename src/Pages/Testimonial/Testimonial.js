@@ -29,27 +29,28 @@ const Testimonial = () => {
         },
       ];
     return (
-        <div className="m-5">
-            <h2 className="text-center mb-3">What our Client Said about US!</h2>
-            <Container fluid>
-                <Row>
-                    <Carousel interval={1000}>
-                        {testimonial.map((c, index) => {
-                        return (
-                            <Carousel.Item interval={5000}>
-                            <div style={{ height: 200, background: "#1E6739", color: "white" }}>
-                                <p className="text-center p-5">{c.content}</p>
-                            </div>
-                            <Carousel.Caption>
-                                <p>{c.author}</p>
-                            </Carousel.Caption>
-                            </Carousel.Item>
-                        );
-                        })}
-                    </Carousel>
-                </Row>
-            </Container>
-        </div>
+        <div className="p-5 mt-3" style={{ background: "#113248"}}>
+            <h2 className="text-center mb-3" style={{ color: "#FFCB12"}}>What our Client Said about US!</h2>
+        <div className="testimonial" >
+        <Container>
+          <Row>
+            <Carousel interval={1000}>
+            {testimonial.map((c, index) => {
+            return (
+            <Carousel.Item interval={5000}>
+              <div style={{ height: 200, background: "#113248", color: "white" }}>
+              <p className="text-center p-5">{c.content}</p>
+              </div>
+            <Carousel.Caption>
+              <p>{c.author}</p>
+            </Carousel.Caption>
+           </Carousel.Item>);
+            })}
+          </Carousel>
+          </Row>
+        </Container>
+      </div>
+      </div>
     );
 };
 

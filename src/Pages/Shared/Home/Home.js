@@ -4,7 +4,6 @@ import Choose from '../../Choose/Choose';
 import NewsLetter from '../../NewsLettet/NewsLetter';
 import Quation from '../../Quation/Quation';
 import Services from '../../Services/Services';
-import Social from '../../Social/Social';
 import TaxTable from '../../TaxTable/TaxTable';
 import Testimonial from '../../Testimonial/Testimonial';
 import Work from '../../Work/Work';
@@ -19,9 +18,7 @@ const Home = () => {
             <Choose/>
             <Testimonial/>
             <Quation/>
-            <NewsLetter/>
-            <Social/>
-            
+            <NewsLetter/> 
         </div>
     );
 };

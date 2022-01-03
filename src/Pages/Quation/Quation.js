@@ -8,7 +8,7 @@ const Quation = () => {
     const onSubmit = data => console.log(data);
     return (
         <div>
-            <div className="quation-section mt-5">
+            <div className="quation-section mt-3">
                 <Container>
                     <Row>
                         <div className="quato-heading">
