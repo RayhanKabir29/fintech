@@ -34,5 +34,4 @@ const Quation = () => {
         </div>
     );
 };
-
 export default Quation;
