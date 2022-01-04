@@ -10,7 +10,7 @@
   display: flex;
   justify-content: space-around;
   background-color: #113248;
-  color: aliceblue;
+  color: #ffcb12;
 }
 .top-right {
   display: flex;
@@ -21,6 +21,6 @@
 }
 .top-left a {
   text-decoration: none;
-  color: aliceblue;
+  color: #ffcb12;
   margin-right: 10px;
 }
