@@ -6,3 +6,21 @@
   font-size: 18px;
   font-weight: 500;
 }
+.top-nav {
+  display: flex;
+  justify-content: space-around;
+  background-color: #113248;
+  color: aliceblue;
+}
+.top-right {
+  display: flex;
+}
+.top-left {
+  display: flex;
+  text-decoration: none;
+}
+.top-left a {
+  text-decoration: none;
+  color: aliceblue;
+  margin-right: 10px;
+}
