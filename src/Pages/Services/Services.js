@@ -1,5 +1,8 @@
 import React from 'react';
 import { Card, Col, Container, Row,Button } from 'react-bootstrap';
+import price1 from '../../images/price-1.png';
+import price2 from '../../images/price-2.png';
+import price3 from '../../images/price-3.png';
 import './Services.css';
 
 const Services = () => {
@@ -22,7 +25,7 @@ const Services = () => {
             <Row className="m-5">
               <Col xs={12} md={4}>
                 <Card className="mb-3 h-100">
-                  <Card.Img variant="top" src="" />
+                  <Card.Img variant="top" src={price1} style={{width:'50%',margin:'0 auto'}}/>
                     <Card.Body>
                       <Card.Title>Online Tax Return with Experts</Card.Title>
                     <Card.Text>
@@ -39,7 +42,7 @@ const Services = () => {
               </Col>
               <Col xs={12} md={4}>
                 <Card className="mb-3 h-100">
-                  <Card.Img variant="top" src="" />
+                  <Card.Img variant="top" src={price2} style={{width:'50%' , margin:'0 auto'}}/>
                     <Card.Body>
                       <Card.Title>
                       In Office Individual Tax Return
@@ -59,7 +62,7 @@ const Services = () => {
               </Col>
               <Col xs={12} md={4}>
                 <Card className="mb-3 h-100">
-                  <Card.Img variant="top" src="" />
+                  <Card.Img variant="top" src={price3} style={{width:'50%', margin:'0 auto'}}/>
                     <Card.Body>
                       <Card.Title>
                       Company/Business Tax Return
