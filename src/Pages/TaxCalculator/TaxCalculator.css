@@ -1,0 +1,14 @@
+.info-heading {
+  background: #1f1247;
+  padding: 20px;
+  color: #fff;
+}
+
+/* Responsive */
+@media only screen and (max-width: 768px) {
+  .info-heading {
+    background: #1f1247;
+    padding: 10px;
+    color: #fff;
+  }
+}

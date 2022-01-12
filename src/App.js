@@ -4,21 +4,23 @@ import './App.css';
 import Footer from './Pages/Shared/Footer/Footer';
 import Header from './Pages/Shared/Header/Header';
 import Home from './Pages/Shared/Home/Home';
+import TaxCalculator from './Pages/TaxCalculator/TaxCalculator';
+
 
 function App() {
   return (
     <div className="">
-      
       <BrowserRouter>
-      <Route>
        <Header/>
-      </Route>
         <Switch>
-          <Route >
+          <Route exact path="/">
           <Home/>
           </Route>
+          <Route path="/taxcalc">
+           <TaxCalculator/>
+          </Route>
         </Switch>
-        <Footer/>
+       <Footer/>
       </BrowserRouter>
     </div>
   );

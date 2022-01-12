@@ -1,8 +1,9 @@
 .navbar {
-  background-color: #ffcb12;
+  background-color: red;
+  background-image: linear-gradient(to right, yellow, #113248);
 }
 .nav-link {
-  color: #113248 !important;
+  color: #fff !important;
   font-size: 18px;
   font-weight: 500;
 }
@@ -23,4 +24,22 @@
   text-decoration: none;
   color: #ffcb12;
   margin-right: 10px;
+}
+/* Responsive */
+@media only screen and (max-width: 768px) {
+  .top-nav {
+    background-color: #113248;
+    color: #ffcb12;
+  }
+  .top-right {
+    display: flex;
+    flex-direction: column;
+  }
+  .top-right p {
+    margin-top: 10px;
+  }
+  .top-left {
+    display: none;
+    text-decoration: none;
+  }
 }
