@@ -1,14 +1,60 @@
-.info-heading {
-  background: #1f1247;
-  padding: 20px;
-  color: #fff;
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
-/* Responsive */
-@media only screen and (max-width: 768px) {
-  .info-heading {
-    background: #1f1247;
-    padding: 10px;
-    color: #fff;
-  }
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+.income-block{
+  background: #1C3B44;
+  color: #ffcb12;
+  padding: 20px 0 79px;
+}
+.income-block h5 {
+  margin-bottom: 15px;
+  color: #ffcb12;
+  text-align: center;
+  font-size: 33px;
+}
+.income-form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.salary{
+  margin-bottom: 15px;
+}
+.salary input[type=number]{
+  margin-left:10px;
+  margin-right:10px;
+}
+.salary select{
+  width: 150px;
+  padding: 2px;
+}
+.tax-year select{
+  width: 150px;
+  margin-left: 45px;
+  margin-bottom: 15px;
+  padding: 2px;
+}
+.annuation-section input[type=number]{
+  margin-left:23px;
+  width: 150px;
+
+}
+.option-block{
+  background: #1C3B44;
+  color: #ffcb12;
+  padding: 20px 0 25px;
+}
+.option-block h5{
+  margin-left: 15px;
+  font-size: 32px;
+}
+.option-check{
+  margin-left: 20px;
 }

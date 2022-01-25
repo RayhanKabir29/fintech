@@ -4,99 +4,168 @@ import './TaxCalculator.css';
 
 const TaxCalculator = () => {
     return (
-        <div className='mt-5'>
+        <div className='my-5'>
            <Container>
-               <Row>
-                   <Col md={4} sm={12}>
-                       <div className="income-info py-3">
-                           <h2>Australian income tax calculator</h2>
-                           <h4>Your Income</h4>   
-                       </div>
-                       <h5>Employment income: (after salary sacrifice, before tax)</h5>
-                       <div className="incom-input d-flex pb-3">
-                       <input type="text" name="" id="" />
-                       <select class="form-select" aria-label="Default select example">
-                        <option selected>Annualy</option>
-                        <option value="1">Monthly</option>
-                        <option value="2">Fortnightly</option>
-                        <option value="3">Weekly</option>
-                        </select>
-                       </div>
-                       <h5>Other taxable income:</h5>
-                       <div className="other-input d-flex pb-5">
-                       <input type="text" name="" id="" />
-                       <select class="form-select" aria-label="Default select example">
-                        <option selected>Annualy</option>
-                        <option value="1">Monthly</option>
-                        <option value="2">Fortnightly</option>
-                        <option value="3">Weekly</option>
-                        </select>
-                       </div>
-                       <h5>Financial Year:</h5>
-                       <div className="finacial-year pb-5">
-                       <select class="form-select" aria-label="Default select example">
-                        <option selected>Annualy</option>
-                        <option value="1">Monthly</option>
-                        <option value="2">Fortnightly</option>
-                        <option value="3">Weekly</option>
-                        </select>
-                       </div>
+               <Row >
+                   <Col md={6} sm={12} className='gx-0'>
+                        <div className="income-block">
+                            <h5>Income</h5>
+                            <div className="income-form">
+                                <form action="">
+                                  <div className="salary">
+                                  <label htmlFor="salary">Your Salary: </label>
+                                    $ <input type="number" />
+                                    <select>
+                                        <option value="1">Monthly</option>
+                                        <option value="2">Yearly</option>
+                                        <option value="3">Weakly</option>
+                                        <option value="4">ForthNight</option>
+                                    </select>
+                                  </div>
+                                  <div className="tax-year">
+                                    <label htmlFor="tax">Tax Year: </label>
+                                    <select>
+                                        <option value="1">2021-2022</option>
+                                        <option value="2">2021-2022</option>
+                                        <option value="3">2021-2022</option>
+                                        <option value="4">2021-2022</option>
+                                    </select>
+                                   </div>
+                                   <div className="annuation-section"> 
+                                   <label htmlFor="annuaation">Your Salary: </label>
+                                    <input type="number" /> %
+                                   </div>
+                                </form>
+                            </div>
+                        </div>
                    </Col>
-                   <Col md={8} sm={12}>
-                       <div className="tax-info">
-                       <div className="info-heading">
-                               <h4>The estimated tax on your taxable income is</h4>
-                               <h5>$</h5>
-                           </div>
-                       <Table bordered>
-                        <tbody>
-                            <tr>
-                            <td><h5>Summary</h5></td>
-                            <td>
-                                <select class="form-select" aria-label="Default select example">
-                                <option selected>Annualy</option>
-                                <option value="1">Monthly</option>
-                                <option value="2">Fortnightly</option>
-                                <option value="3">Weekly</option>
-                                </select>
-                            </td>
-                            </tr>
-                            <tr>
-                                <td><h5>Your taxable income:</h5></td>
-                                <td><h5>$23457</h5></td>
-                            </tr>
-                            <tr>
-                                <td><p>Income tax payable:</p></td>
-                                <td><p>$</p></td>
-                            </tr>
-                            <tr>
-                                <td><p>Medicare levy payable:</p></td>
-                                <td><p>$</p></td>
-                            </tr>
-                            <tr>
-                                <td><h5>Your income after tax & Medicare levy:</h5></td>
-                                <td><h5>$</h5></td>
-                            </tr>
-                            <tr>
-                                <td><h5>Your marginal tax rate:</h5></td>
-                                <td><h5>$</h5></td>
-                            </tr>
-                            <tr>
-                                <td><h5>This means for an annual income of $you pay:</h5></td>
-                                <td><h5>$</h5></td>
-                            </tr>
-                            <tr>
-                                <td><p>No tax on income between $ - $</p></td>
-                                <td><p>$</p></td>
-                            </tr>
-                            <tr>
-                                <td><h5>Income tax payable</h5></td>
-                                <td><p>$</p></td>
-                            </tr>
-                        </tbody>
-                        </Table>
-                       </div>
+                   <Col md={6} sm={12} className='gx-0'>
+                        <div className="option-block">
+                            <h5>Options</h5>
+                            <div className="option-check">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                    Includes Superannuation
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                    Non-Resident
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                    Working Holiday Visa
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                    No tax-free threshold
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                    HELP and TSL
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                    Student Loan
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                    Withhold Tax Offsets
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
                    </Col>
+               </Row>
+               <Row className="mt-5">
+               <Table striped bordered hover>
+                <thead>
+                    <tr>
+                    <th>2021 - 2022</th>
+                    <th>Weekly</th>
+                    <th>Fortnightly</th>
+                    <th>Monthly</th>
+                    <th>Annually</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    <td>Pay</td>
+                    <td>12</td>
+                    <td>121</td>
+                    <td>1234</td>
+                    <td>123</td>
+                    </tr>
+                    <tr>
+                    <td>Pay</td>
+                    <td>12</td>
+                    <td>121</td>
+                    <td>1234</td>
+                    <td>123</td>
+                    </tr>
+                    <tr>
+                    <td>Taxable Income</td>
+                    <td>12</td>
+                    <td>121</td>
+                    <td>1234</td>
+                    <td>123</td>
+                    </tr>
+                    <tr>
+                    <td>Superannuation *</td>
+                    <td>12</td>
+                    <td>121</td>
+                    <td>1234</td>
+                    <td>123</td>
+                    </tr>
+                    <tr>
+                    <td>Total Taxes</td>
+                    <td>12</td>
+                    <td>121</td>
+                    <td>1234</td>
+                    <td>123</td>
+                    </tr>
+                    <tr>
+                    <td>Income Tax</td>
+                    <td>12</td>
+                    <td>121</td>
+                    <td>1234</td>
+                    <td>123</td>
+                    </tr>
+                    <tr>
+                    <td>Medicare1</td>
+                    <td>12</td>
+                    <td>121</td>
+                    <td>1234</td>
+                    <td>123</td>
+                    </tr>
+                    <tr>
+                    <td>Other taxes and Levies2</td>
+                    <td>12</td>
+                    <td>121</td>
+                    <td>1234</td>
+                    <td>123</td>
+                    </tr>
+                    <tr>
+                    <td>Tax Offsets3</td>
+                    <td>12</td>
+                    <td>121</td>
+                    <td>1234</td>
+                    <td>123</td>
+                    </tr>
+                </tbody>
+               </Table>
                </Row>
            </Container>
         </div>
