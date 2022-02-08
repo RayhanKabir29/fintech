@@ -14,7 +14,7 @@ const TaxCalculator = () => {
                                 <form action="">
                                   <div className="salary">
                                   <label htmlFor="salary">Your Salary: </label>
-                                    $ <input type="number" />
+                                    $ <input type="number" name="salaryInput"/>
                                     <select>
                                         <option value="1">Monthly</option>
                                         <option value="2">Yearly</option>
@@ -24,7 +24,7 @@ const TaxCalculator = () => {
                                   </div>
                                   <div className="tax-year">
                                     <label htmlFor="tax">Tax Year: </label>
-                                    <select>
+                                    <select name="economicYear">
                                         <option value="1">2021-2022</option>
                                         <option value="2">2021-2022</option>
                                         <option value="3">2021-2022</option>
@@ -33,7 +33,7 @@ const TaxCalculator = () => {
                                    </div>
                                    <div className="annuation-section"> 
                                    <label htmlFor="annuaation">Your Salary: </label>
-                                    <input type="number" /> %
+                                    <input type="number" name="salaryPercent"/> %
                                    </div>
                                 </form>
                             </div>
@@ -44,25 +44,25 @@ const TaxCalculator = () => {
                             <h5>Options</h5>
                             <div className="option-check">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="checkSuperAnnuation"/>
                                     <label class="form-check-label" for="flexCheckDefault">
                                     Includes Superannuation
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="checkNonResident"/>
                                     <label class="form-check-label" for="flexCheckDefault">
                                     Non-Resident
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="checkWorkingHoliday"/>
                                     <label class="form-check-label" for="flexCheckDefault">
                                     Working Holiday Visa
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="checkNoTaxFree"/>
                                     <label class="form-check-label" for="flexCheckDefault">
                                     No tax-free threshold
                                     </label>
@@ -74,13 +74,13 @@ const TaxCalculator = () => {
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="checkStudentLoan"/>
                                     <label class="form-check-label" for="flexCheckDefault">
                                     Student Loan
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="checkWithHoldTax"/>
                                     <label class="form-check-label" for="flexCheckDefault">
                                     Withhold Tax Offsets
                                     </label>
