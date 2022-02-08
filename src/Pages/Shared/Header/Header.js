@@ -30,7 +30,6 @@ const Header = () => {
                         <Nav.Link as ={HashLink} to="/home#service">Our Services</Nav.Link>
                         <Nav.Link as ={HashLink} to="/home#pricing">Pricing</Nav.Link>
                         <Nav.Link as ={HashLink} to="/home#meeting">Zoom Meeting</Nav.Link>
-                        <Nav.Link as ={HashLink} to="/home#pricing">Pricing</Nav.Link>
                         <NavDropdown title="Resources" id="basic-nav-dropdown">
                         <NavDropdown.Item href="#action/3.2">PAYG Tables</NavDropdown.Item>
                         <NavDropdown.Item href="#action/3.2">FBT Rates</NavDropdown.Item>

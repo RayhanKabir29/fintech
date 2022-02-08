@@ -1,0 +1,13 @@
+.about-section-header {
+  text-align: left;
+}
+.about-section-header h1 {
+  font-weight: 700;
+  font-size: 72px;
+}
+.about-section-header p {
+  letter-spacing: 10px;
+}
+.about-section-info {
+  text-align: left;
+}

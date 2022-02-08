@@ -1,6 +1,7 @@
 import { Switch,Route} from 'react-router-dom';
 import { BrowserRouter } from 'react-router-dom/cjs/react-router-dom.min';
 import './App.css';
+import About from './Pages/About/About';
 import Footer from './Pages/Shared/Footer/Footer';
 import Header from './Pages/Shared/Header/Header';
 import Home from './Pages/Shared/Home/Home';
@@ -15,6 +16,12 @@ function App() {
         <Switch>
           <Route exact path="/">
           <Home/>
+          </Route>
+          <Route exact path="/home">
+          <Home/>
+          </Route>
+          <Route path="/about">
+            <About/>
           </Route>
           <Route path="/taxcalc">
            <TaxCalculator/>
