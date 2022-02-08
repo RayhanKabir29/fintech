@@ -24,7 +24,7 @@ const About = () => {
                         <Row>
                             <Col md={12} xs={12} className="text-center mb-3">
                                 <div className="about-work-heading">
-                                    g<h1>What We Do</h1>
+                                    <h1>What We Do</h1>
                                 </div>
                             </Col>
                             <Col xs={12} md={6} className="mb-3">
