@@ -5,14 +5,17 @@ import "./TaxCalculator.css";
 const TaxCalculator = () => {
   const [salary, setSalary] = useState();
   const [dateTypes, setDateTypes] = useState([
+    { value: "Select Payment Type" },
     { value: "Weakly" },
     { value: "Fortnight" },
     { value: "Monthly" },
     { value: "Yearly" },
   ]);
   const [years, setYears] = useState([
+    { value: "Select Economic Year" },
     { value: "2021-22" },
     { value: "2022-23" },
+    { value: "2023-24" },
   ]);
   const [year, setYear] = useState(null);
   const [dateType, setDateType] = useState(null);
@@ -54,6 +57,14 @@ const TaxCalculator = () => {
     },
   ];
   const handleFormSubmit = (e) => {
+    e.preventDefault();
+    if (year === "2021-22") {
+      setCalculated(10);
+    } else if (year === "2022-23") {
+      setCalculated(10.5);
+    } else if (year === "2023-24") {
+      setCalculated(11);
+    }
     const checkedItems = options.filter((item) => item.isChecked === true);
     var additionalCharge = 0;
     checkedItems.forEach((el) => {
@@ -64,19 +75,27 @@ const TaxCalculator = () => {
         additionalCharge += 7;
       }
     });
-    console.log("checkedItems", checkedItems);
-    e.preventDefault();
-    if (year === "2022-23") {
-      setCalculated(10.5);
+    if (dateType === "Weakly") {
+      setWeeklySalary(salary / 1 + additionalCharge);
+      setFortnightlySalary(salary * 2 + additionalCharge);
+      setMonthlySalary(salary * 4 + additionalCharge);
+      setAnnualSalary(salary * 52 + additionalCharge);
+    } else if (dateType === "Fortnight") {
+      setWeeklySalary(salary / 2 + additionalCharge);
+      setFortnightlySalary(salary / 1 + additionalCharge);
+      setMonthlySalary(salary * 2 + additionalCharge);
+      setAnnualSalary(salary * 26 + additionalCharge);
+    } else if (dateType === "Monthly") {
+      setWeeklySalary(salary / 4 + additionalCharge);
+      setFortnightlySalary(salary / 2 + additionalCharge);
+      setMonthlySalary(salary / 1 + additionalCharge);
+      setAnnualSalary(salary * 12 + additionalCharge);
+    } else if (dateType === "Yearly") {
+      setWeeklySalary(salary / 52 + additionalCharge);
+      setFortnightlySalary(salary / 26 + additionalCharge);
+      setMonthlySalary(salary / 12 + additionalCharge);
+      setAnnualSalary(salary / 1 + additionalCharge);
     }
-    if (dateType === "Monthly") {
-      setWeeklySalary(salary / 4);
-      setFortnightlySalary(salary / 2);
-      setMonthlySalary(salary);
-      setAnnualSalary(salary * 12);
-    }
-
-    console.log("additionalCharge", additionalCharge);
   };
   return (
     <div className="my-5">
@@ -117,7 +136,7 @@ const TaxCalculator = () => {
                     <input
                       type="number"
                       name="salaryPercent"
-                      defaultValue={calculated}
+                      value={calculated}
                       onChange={(e) => setCalculated(e.target.value)}
                     />
                     %
@@ -138,82 +157,14 @@ const TaxCalculator = () => {
                     <input
                       class="form-check-input"
                       type="checkbox"
-                      // defaultValue={option.value}
                       onChange={() => (option.isChecked = !option.isChecked)}
                       defaultChecked={option.isChecked}
-                      id="checkSuperAnnuation"
                     />
                     <label class="form-check-label" for="flexCheckDefault">
                       {option.label}
                     </label>
                   </div>
                 ))}
-                {/* <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value=""
-                    id="checkNonResident"
-                  />
-                  <label class="form-check-label" for="flexCheckDefault">
-                    Non-Resident
-                  </label>
-                </div>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value=""
-                    id="checkWorkingHoliday"
-                  />
-                  <label class="form-check-label" for="flexCheckDefault">
-                    Working Holiday Visa
-                  </label>
-                </div>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value=""
-                    id="checkNoTaxFree"
-                  />
-                  <label class="form-check-label" for="flexCheckDefault">
-                    No tax-free threshold
-                  </label>
-                </div>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value=""
-                    id="helpAndTsl"
-                  />
-                  <label class="form-check-label" for="flexCheckDefault">
-                    HELP and TSL
-                  </label>
-                </div>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value=""
-                    id="checkStudentLoan"
-                  />
-                  <label class="form-check-label" for="flexCheckDefault">
-                    Student Loan
-                  </label>
-                </div>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value=""
-                    id="checkWithHoldTax"
-                  />
-                  <label class="form-check-label" for="flexCheckDefault">
-                    Withhold Tax Offsets
-                  </label>
-                </div> */}
               </div>
             </div>
           </Col>
@@ -222,7 +173,7 @@ const TaxCalculator = () => {
           <Table striped bordered hover>
             <thead>
               <tr>
-                <th>2021 - 2022</th>
+                <th>{year}</th>
                 <th>Weekly</th>
                 <th>Fortnightly</th>
                 <th>Monthly</th>
