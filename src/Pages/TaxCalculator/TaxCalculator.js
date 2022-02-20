@@ -23,8 +23,48 @@ const TaxCalculator = () => {
   const [fortnightlySalary, setFortnightlySalary] = useState(0);
   const [monthlySalary, setMonthlySalary] = useState(0);
   const [annualSalary, setAnnualSalary] = useState(0);
+  const options = [
+    {
+      label: "Includes Superannuation",
+      isChecked: false,
+      value: "includes-superannuation",
+    },
+    {
+      label: "Non-Resident",
+      isChecked: false,
+      value: "non-resident",
+    },
 
+    {
+      label: "Working Holiday Visa",
+      isChecked: false,
+      value: "working-holiday-visa",
+    },
+    {
+      label: "No tax-free threshold",
+      isChecked: false,
+      value: "no-tax-free-threshold",
+    },
+    { label: "HELP and TSL", isChecked: false, value: "help-and-tsl" },
+    { label: "Student Loan", isChecked: false, value: "student-loan" },
+    {
+      label: "Withhold Tax Offsets",
+      isChecked: false,
+      value: "withhold-tax-offsets",
+    },
+  ];
   const handleFormSubmit = (e) => {
+    const checkedItems = options.filter((item) => item.isChecked === true);
+    var additionalCharge = 0;
+    checkedItems.forEach((el) => {
+      if (el.value === "includes-superannuation") {
+        additionalCharge += 5;
+      }
+      if (el.value === "non-resident") {
+        additionalCharge += 7;
+      }
+    });
+    console.log("checkedItems", checkedItems);
     e.preventDefault();
     if (year === "2022-23") {
       setCalculated(10.5);
@@ -35,10 +75,8 @@ const TaxCalculator = () => {
       setMonthlySalary(salary);
       setAnnualSalary(salary * 12);
     }
-    else(dateType === "Monthly" && checkSuperAnnuation === "checked"){
-      setWeeklySalary(salary / 4)-10;
 
-    }
+    console.log("additionalCharge", additionalCharge);
   };
   return (
     <div className="my-5">
@@ -95,18 +133,22 @@ const TaxCalculator = () => {
             <div className="option-block">
               <h5>Options</h5>
               <div className="option-check">
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value=""
-                    id="checkSuperAnnuation"
-                  />
-                  <label class="form-check-label" for="flexCheckDefault">
-                    Includes Superannuation
-                  </label>
-                </div>
-                <div class="form-check">
+                {options.map((option, index) => (
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      // defaultValue={option.value}
+                      onChange={() => (option.isChecked = !option.isChecked)}
+                      defaultChecked={option.isChecked}
+                      id="checkSuperAnnuation"
+                    />
+                    <label class="form-check-label" for="flexCheckDefault">
+                      {option.label}
+                    </label>
+                  </div>
+                ))}
+                {/* <div class="form-check">
                   <input
                     class="form-check-input"
                     type="checkbox"
@@ -171,7 +213,7 @@ const TaxCalculator = () => {
                   <label class="form-check-label" for="flexCheckDefault">
                     Withhold Tax Offsets
                   </label>
-                </div>
+                </div> */}
               </div>
             </div>
           </Col>
