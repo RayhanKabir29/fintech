@@ -3,10 +3,12 @@ import { BrowserRouter } from 'react-router-dom/cjs/react-router-dom.min';
 import './App.css';
 import About from './Pages/About/About';
 import Login from './Pages/Login/Login';
+import Services from './Pages/Services/Services';
 import Footer from './Pages/Shared/Footer/Footer';
 import Header from './Pages/Shared/Header/Header';
 import Home from './Pages/Shared/Home/Home';
 import TaxCalculator from './Pages/TaxCalculator/TaxCalculator';
+import TaxTable from './Pages/TaxTable/TaxTable';
 
 
 function App() {
@@ -23,6 +25,12 @@ function App() {
           </Route>
           <Route path="/about">
             <About/>
+          </Route>
+          <Route path="/services">
+           <Services/>
+          </Route>
+          <Route path="/price">
+            <TaxTable />
           </Route>
           <Route path="/taxcalc">
            <TaxCalculator/>

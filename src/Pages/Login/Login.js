@@ -35,7 +35,8 @@ const Login = () =>{
             onChange={(e) => setPassword(e.target.value)}
           />
         </Form.Group>
-        <Button block size="lg" type="submit" disabled={!validateForm()} className="login-btn">
+        <Button block size="lg" type="submit" 
+        className="login-btn pointer">
           Login
         </Button>
       </Form>

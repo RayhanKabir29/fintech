@@ -5,11 +5,11 @@ input::-webkit-inner-spin-button {
 }
 
 /* Firefox */
-input[type=number] {
+input[type="number"] {
   -moz-appearance: textfield;
 }
-.income-block{
-  background: #1C3B44;
+.income-block {
+  background: #1c3b44;
   color: #ffcb12;
   padding: 20px 0 79px;
 }
@@ -19,42 +19,54 @@ input[type=number] {
   text-align: center;
   font-size: 33px;
 }
-.income-form{
+.income-form {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.salary{
+.salary {
   margin-bottom: 15px;
 }
-.salary input[type=number]{
-  margin-left:10px;
-  margin-right:10px;
+.salary input[type="number"] {
+  margin-left: 10px;
+  margin-right: 10px;
 }
-.salary select{
+.salary select {
   width: 150px;
   padding: 2px;
 }
-.tax-year select{
+.tax-year select {
   width: 150px;
   margin-left: 45px;
   margin-bottom: 15px;
   padding: 2px;
 }
-.annuation-section input[type=number]{
-  margin-left:23px;
-  width: 150px;
-
+.annuation-section {
+  display: inline;
 }
-.option-block{
-  background: #1C3B44;
+.annuation-section input[type="number"] {
+  margin-left: 23px;
+}
+.calculate-btn {
+  display: inline;
+  margin-left: 10px;
+}
+.calculate-btn button {
+  padding: 3px 20px;
+  border: none;
+  border-radius: 5px;
+  background: #ffcb12;
+  color: #1c3b44;
+}
+.option-block {
+  background: #1c3b44;
   color: #ffcb12;
   padding: 20px 0 25px;
 }
-.option-block h5{
+.option-block h5 {
   margin-left: 15px;
   font-size: 32px;
 }
-.option-check{
+.option-check {
   margin-left: 20px;
 }

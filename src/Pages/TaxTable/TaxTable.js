@@ -4,7 +4,7 @@ import './TaxTable.css';
 
 const TaxTable = () => {
     return (
-        <div className='py-5'>
+        <div className='py-5' id="pricing">
             <Container>
                 <Row>
                     <h2 className='text-center mb-3'>Our Value-Added Prices For Every Tax Situation</h2>

@@ -1,9 +1,39 @@
+.Login {
+  min-height: 60vh;
+}
+
 .login-btn {
   margin-top: 20px;
+  width: 100%;
+  background-color: #103045 !important;
+  border: none !important;
+}
+.btn-primary:focus {
+  color: #fff;
+  background-color: #0b5ed7;
+  border-color: #0a58ca;
+  box-shadow: none !important;
+}
+.form-control:focus {
+  color: #103045;
+  background-color: #fff;
+  border-color: #103045 !important;
+  outline: 0;
+  box-shadow: none !important;
+}
+@media all and (max-width: 320px) {
+  .Login {
+    padding: 20px;
+  }
+
+  .Login form {
+    margin: 0 auto;
+    max-width: 320px;
+  }
 }
 @media all and (min-width: 480px) {
   .Login {
-    padding: 60px 0;
+    padding: 60px 0px;
   }
 
   .Login form {
