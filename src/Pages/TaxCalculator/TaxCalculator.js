@@ -109,19 +109,40 @@ const TaxCalculator = () => {
       setAnnualTaxableIncome(salary * 52 - 50);
     } else if (dateType === "Fortnight") {
       setWeeklySalary(salary / 2 + additionalCharge);
+      setWeaklyTaxableIncome(salary / 2 - 50);
+
       setFortnightlySalary(salary / 1 + additionalCharge);
+      setFortnightlyTaxableIncome(salary / 1 - 50);
+
       setMonthlySalary(salary * 2 + additionalCharge);
+      setMonthlyTaxableIncome(salary * 2 - 50);
+
       setAnnualSalary(salary * 26 + additionalCharge);
+      setAnnualTaxableIncome(salary * 26 - 50);
     } else if (dateType === "Monthly") {
       setWeeklySalary(salary / 4 + additionalCharge);
+      setWeaklyTaxableIncome(salary / 4 - 50);
+
       setFortnightlySalary(salary / 2 + additionalCharge);
+      setFortnightlyTaxableIncome(salary / 2 - 50);
+
       setMonthlySalary(salary / 1 + additionalCharge);
+      setMonthlyTaxableIncome(salary / 1 - 50);
+
       setAnnualSalary(salary * 12 + additionalCharge);
+      setAnnualTaxableIncome(salary * 12 - 50);
     } else if (dateType === "Yearly") {
       setWeeklySalary(salary / 52 + additionalCharge);
+      setWeaklyTaxableIncome(salary / 52 - 50);
+
       setFortnightlySalary(salary / 26 + additionalCharge);
+      setFortnightlyTaxableIncome(salary / 26 - 50);
+
       setMonthlySalary(salary / 12 + additionalCharge);
+      setMonthlyTaxableIncome(salary / 12 - 50);
+
       setAnnualSalary(salary / 1 + additionalCharge);
+      setAnnualTaxableIncome(salary / 1 - 50);
     }
   };
   return (
