@@ -31,6 +31,36 @@ const TaxCalculator = () => {
   const [monthlyTaxableIncome, setMonthlyTaxableIncome] = useState(0);
   const [annualTaxableIncome, setAnnualTaxableIncome] = useState(0);
 
+  const [weaklySuperAnnuation, setWeaklySuperAnnuation] = useState(0);
+  const [fortnightlySuperAnnuation, setFortnightlySuperAnnuation] = useState(0);
+  const [monthlySuperAnnuation, setMonthlySuperAnnuation] = useState(0);
+  const [annualSuperAnnuation, setAnnualSuperAnnuation] = useState(0);
+
+  const [weaklyTotalTax, setWeaklyTotalTax] = useState(0);
+  const [fortnightlyTotalTax, setFortnightlyTotalTax] = useState(0);
+  const [monthlyTotalTax, setMonthlyTotalTax] = useState(0);
+  const [annualTotalTax, setAnnualTotalTax] = useState(0);
+
+  const [weaklyIncomeTax, setWeaklyIncomeTax] = useState(0);
+  const [fortnightlyIncomeTax, setFortnightlyIncomeTax] = useState(0);
+  const [monthlyIncomeTax, setMonthlyIncomeTax] = useState(0);
+  const [annualIncomeTax, setAnnualIncomeTax] = useState(0);
+
+  const [weaklyMediCare, setWeaklyMediCare] = useState(0);
+  const [fortnightlyMediCare, setFortnightlyMediCare] = useState(0);
+  const [monthlyMediCare, setMonthlyMediCare] = useState(0);
+  const [annualMediCare, setAnnualMediCare] = useState(0);
+
+  const [weaklyOtherTax, setWeaklyOtherTax] = useState(0);
+  const [fortnightlyOtherTax, setFortnightlyOtherTax] = useState(0);
+  const [monthlyOtherTax, setMonthlyOtherTax] = useState(0);
+  const [annualOtherTax, setAnnualOtherTax] = useState(0);
+
+  const [weaklyTaxOffset, setWeaklyTaxOffset] = useState(0);
+  const [fortnightlyTaxOffset, setFortnightlyTaxOffset] = useState(0);
+  const [monthlyTaxOffset, setMonthlyTaxOffset] = useState(0);
+  const [annualTaxoffset, setAnnualTaxoffset] = useState(0);
+
   const options = [
     {
       label: "Includes Superannuation",
