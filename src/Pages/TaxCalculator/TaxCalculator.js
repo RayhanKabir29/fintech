@@ -19,13 +19,18 @@ const TaxCalculator = () => {
   ]);
   const [year, setYear] = useState(null);
   const [dateType, setDateType] = useState(null);
-  // const [calculation, setCalculation] = useState(null);
   const [calculated, setCalculated] = useState(0);
 
   const [weeklySalary, setWeeklySalary] = useState(0);
   const [fortnightlySalary, setFortnightlySalary] = useState(0);
   const [monthlySalary, setMonthlySalary] = useState(0);
   const [annualSalary, setAnnualSalary] = useState(0);
+
+  const [weaklyTaxableIncome, setWeaklyTaxableIncome] = useState(0);
+  const [fortnightlyTaxableIncome, setFortnightlyTaxableIncome] = useState(0);
+  const [monthlyTaxableIncome, setMonthlyTaxableIncome] = useState(0);
+  const [annualTaxableIncome, setAnnualTaxableIncome] = useState(0);
+
   const options = [
     {
       label: "Includes Superannuation",
@@ -74,12 +79,34 @@ const TaxCalculator = () => {
       if (el.value === "non-resident") {
         additionalCharge += 7;
       }
+      if (el.value === "working-holiday-visa") {
+        additionalCharge += 3;
+      }
+      if (el.value === "no-tax-free-threshold") {
+        additionalCharge += 4;
+      }
+      if (el.value === "help-and-tsl") {
+        additionalCharge += 6;
+      }
+      if (el.value === "student-loan") {
+        additionalCharge += 8;
+      }
+      if (el.value === "withhold-tax-offsets") {
+        additionalCharge += 9;
+      }
     });
     if (dateType === "Weakly") {
       setWeeklySalary(salary / 1 + additionalCharge);
+      setWeaklyTaxableIncome(salary / 1 - 50);
+
       setFortnightlySalary(salary * 2 + additionalCharge);
+      setFortnightlyTaxableIncome(salary * 2 - 50);
+
       setMonthlySalary(salary * 4 + additionalCharge);
+      setMonthlyTaxableIncome(salary * 4 - 50);
+
       setAnnualSalary(salary * 52 + additionalCharge);
+      setAnnualTaxableIncome(salary * 52 - 50);
     } else if (dateType === "Fortnight") {
       setWeeklySalary(salary / 2 + additionalCharge);
       setFortnightlySalary(salary / 1 + additionalCharge);
@@ -190,10 +217,10 @@ const TaxCalculator = () => {
               </tr>
               <tr>
                 <td>Taxable Income</td>
-                <td>12</td>
-                <td>121</td>
-                <td>1234</td>
-                <td>123</td>
+                <td>{weaklyTaxableIncome}</td>
+                <td>{fortnightlyTaxableIncome}</td>
+                <td>{monthlyTaxableIncome}</td>
+                <td>{annualTaxableIncome}</td>
               </tr>
               <tr>
                 <td>Superannuation *</td>
