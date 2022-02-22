@@ -59,7 +59,7 @@ const TaxCalculator = () => {
   const [weaklyTaxOffset, setWeaklyTaxOffset] = useState(0);
   const [fortnightlyTaxOffset, setFortnightlyTaxOffset] = useState(0);
   const [monthlyTaxOffset, setMonthlyTaxOffset] = useState(0);
-  const [annualTaxoffset, setAnnualTaxoffset] = useState(0);
+  const [annualTaxoffset, setAnnualTaxOffset] = useState(0);
 
   const options = [
     {
@@ -128,51 +128,147 @@ const TaxCalculator = () => {
     if (dateType === "Weakly") {
       setWeeklySalary(salary / 1 + additionalCharge);
       setWeaklyTaxableIncome(salary / 1 - 50);
+      setWeaklySuperAnnuation(0);
+      setWeaklyTotalTax(0);
+      setWeaklyIncomeTax(0);
+      setWeaklyMediCare(0);
+      setWeaklyOtherTax(0);
+      setWeaklyTaxOffset(0);
 
       setFortnightlySalary(salary * 2 + additionalCharge);
       setFortnightlyTaxableIncome(salary * 2 - 50);
+      setFortnightlySuperAnnuation(0);
+      setFortnightlyTotalTax(0);
+      setFortnightlyIncomeTax(0);
+      setFortnightlyMediCare(0);
+      setFortnightlyOtherTax(0);
+      setFortnightlyTaxOffset(0);
 
       setMonthlySalary(salary * 4 + additionalCharge);
       setMonthlyTaxableIncome(salary * 4 - 50);
+      setMonthlySuperAnnuation(0);
+      setMonthlyTotalTax(0);
+      setMonthlyIncomeTax(0);
+      setMonthlyMediCare(0);
+      setMonthlyOtherTax(0);
+      setMonthlyTaxOffset(0);
 
       setAnnualSalary(salary * 52 + additionalCharge);
       setAnnualTaxableIncome(salary * 52 - 50);
+      setAnnualSuperAnnuation(0);
+      setAnnualTotalTax(0);
+      setAnnualIncomeTax(0);
+      setAnnualMediCare(0);
+      setAnnualOtherTax(0);
+      setAnnualTaxOffset(0);
     } else if (dateType === "Fortnight") {
       setWeeklySalary(salary / 2 + additionalCharge);
       setWeaklyTaxableIncome(salary / 2 - 50);
+      setWeaklySuperAnnuation(0);
+      setWeaklyTotalTax(0);
+      setWeaklyIncomeTax(0);
+      setWeaklyMediCare(0);
+      setWeaklyOtherTax(0);
+      setWeaklyTaxOffset(0);
 
       setFortnightlySalary(salary / 1 + additionalCharge);
       setFortnightlyTaxableIncome(salary / 1 - 50);
+      setFortnightlySuperAnnuation(0);
+      setFortnightlyTotalTax(0);
+      setFortnightlyIncomeTax(0);
+      setFortnightlyMediCare(0);
+      setFortnightlyOtherTax(0);
+      setFortnightlyTaxOffset(0);
 
       setMonthlySalary(salary * 2 + additionalCharge);
       setMonthlyTaxableIncome(salary * 2 - 50);
+      setMonthlySuperAnnuation(0);
+      setMonthlyTotalTax(0);
+      setMonthlyIncomeTax(0);
+      setMonthlyMediCare(0);
+      setMonthlyOtherTax(0);
+      setMonthlyTaxOffset(0);
 
       setAnnualSalary(salary * 26 + additionalCharge);
       setAnnualTaxableIncome(salary * 26 - 50);
+      setAnnualSuperAnnuation(0);
+      setAnnualTotalTax(0);
+      setAnnualIncomeTax(0);
+      setAnnualMediCare(0);
+      setAnnualOtherTax(0);
+      setAnnualTaxOffset(0);
     } else if (dateType === "Monthly") {
       setWeeklySalary(salary / 4 + additionalCharge);
       setWeaklyTaxableIncome(salary / 4 - 50);
+      setWeaklySuperAnnuation(0);
+      setWeaklyTotalTax(0);
+      setWeaklyIncomeTax(0);
+      setWeaklyMediCare(0);
+      setWeaklyOtherTax(0);
+      setWeaklyTaxOffset(0);
 
       setFortnightlySalary(salary / 2 + additionalCharge);
       setFortnightlyTaxableIncome(salary / 2 - 50);
+      setFortnightlySuperAnnuation(0);
+      setFortnightlyTotalTax(0);
+      setFortnightlyIncomeTax(0);
+      setFortnightlyMediCare(0);
+      setFortnightlyOtherTax(0);
+      setFortnightlyTaxOffset(0);
 
       setMonthlySalary(salary / 1 + additionalCharge);
       setMonthlyTaxableIncome(salary / 1 - 50);
+      setMonthlySuperAnnuation(0);
+      setMonthlyTotalTax(0);
+      setMonthlyIncomeTax(0);
+      setMonthlyMediCare(0);
+      setMonthlyOtherTax(0);
+      setMonthlyTaxOffset(0);
 
       setAnnualSalary(salary * 12 + additionalCharge);
       setAnnualTaxableIncome(salary * 12 - 50);
+      setAnnualSuperAnnuation(0);
+      setAnnualTotalTax(0);
+      setAnnualIncomeTax(0);
+      setAnnualMediCare(0);
+      setAnnualOtherTax(0);
+      setAnnualTaxOffset(0);
     } else if (dateType === "Yearly") {
       setWeeklySalary(salary / 52 + additionalCharge);
       setWeaklyTaxableIncome(salary / 52 - 50);
+      setWeaklySuperAnnuation(0);
+      setWeaklyTotalTax(0);
+      setWeaklyIncomeTax(0);
+      setWeaklyMediCare(0);
+      setWeaklyOtherTax(0);
+      setWeaklyTaxOffset(0);
 
       setFortnightlySalary(salary / 26 + additionalCharge);
       setFortnightlyTaxableIncome(salary / 26 - 50);
+      setFortnightlySuperAnnuation(0);
+      setFortnightlyTotalTax(0);
+      setFortnightlyIncomeTax(0);
+      setFortnightlyMediCare(0);
+      setFortnightlyOtherTax(0);
+      setFortnightlyTaxOffset(0);
 
       setMonthlySalary(salary / 12 + additionalCharge);
       setMonthlyTaxableIncome(salary / 12 - 50);
+      setMonthlySuperAnnuation(0);
+      setMonthlyTotalTax(0);
+      setMonthlyIncomeTax(0);
+      setMonthlyMediCare(0);
+      setMonthlyOtherTax(0);
+      setMonthlyTaxOffset(0);
 
       setAnnualSalary(salary / 1 + additionalCharge);
       setAnnualTaxableIncome(salary / 1 - 50);
+      setAnnualSuperAnnuation(0);
+      setAnnualTotalTax(0);
+      setAnnualIncomeTax(0);
+      setAnnualMediCare(0);
+      setAnnualOtherTax(0);
+      setAnnualTaxOffset(0);
     }
   };
   return (
@@ -275,45 +371,45 @@ const TaxCalculator = () => {
               </tr>
               <tr>
                 <td>Superannuation *</td>
-                <td>12</td>
-                <td>121</td>
-                <td>1234</td>
-                <td>123</td>
+                <td>{weaklySuperAnnuation}</td>
+                <td>{fortnightlySuperAnnuation}</td>
+                <td>{monthlySuperAnnuation}</td>
+                <td>{annualSuperAnnuation}</td>
               </tr>
               <tr>
                 <td>Total Taxes</td>
-                <td>12</td>
-                <td>121</td>
-                <td>1234</td>
-                <td>123</td>
+                <td>{weaklyTotalTax}</td>
+                <td>{fortnightlyTotalTax}</td>
+                <td>{monthlyTotalTax}</td>
+                <td>{annualTotalTax}</td>
               </tr>
               <tr>
                 <td>Income Tax</td>
-                <td>12</td>
-                <td>121</td>
-                <td>1234</td>
-                <td>123</td>
+                <td>{weaklyIncomeTax}</td>
+                <td>{fortnightlyIncomeTax}</td>
+                <td>{monthlyIncomeTax}</td>
+                <td>{annualIncomeTax}</td>
               </tr>
               <tr>
                 <td>Medicare1</td>
-                <td>12</td>
-                <td>121</td>
-                <td>1234</td>
-                <td>123</td>
+                <td>{weaklyMediCare}</td>
+                <td>{fortnightlyMediCare}</td>
+                <td>{monthlyMediCare}</td>
+                <td>{annualMediCare}</td>
               </tr>
               <tr>
                 <td>Other taxes and Levies2</td>
-                <td>12</td>
-                <td>121</td>
-                <td>1234</td>
-                <td>123</td>
+                <td>{weaklyOtherTax}</td>
+                <td>{fortnightlyOtherTax}</td>
+                <td>{monthlyOtherTax}</td>
+                <td>{annualOtherTax}</td>
               </tr>
               <tr>
                 <td>Tax Offsets3</td>
-                <td>12</td>
-                <td>121</td>
-                <td>1234</td>
-                <td>123</td>
+                <td>{weaklyTaxOffset}</td>
+                <td>{fortnightlyTaxOffset}</td>
+                <td>{monthlyTaxOffset}</td>
+                <td>{annualTaxoffset}</td>
               </tr>
             </tbody>
           </Table>
