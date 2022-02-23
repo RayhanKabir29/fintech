@@ -1,0 +1,21 @@
+.career-form {
+  background-color: #133448;
+  padding: 60px 0;
+  color: #ffc412;
+}
+.career-btn {
+  padding: 7px 20px;
+  width: 295px;
+  border: none;
+  background-color: #ffc412;
+  border-radius: 5px;
+  color: #133448;
+  font-weight: 600;
+  font-size: 18px;
+  transition: all 0.3s ease;
+}
+.career-btn:hover {
+  background-color: #fff;
+
+  color: #133448;
+}
