@@ -1,45 +1,48 @@
-import { Switch,Route} from 'react-router-dom';
-import { BrowserRouter } from 'react-router-dom/cjs/react-router-dom.min';
-import './App.css';
-import About from './Pages/About/About';
-import Login from './Pages/Login/Login';
-import Services from './Pages/Services/Services';
-import Footer from './Pages/Shared/Footer/Footer';
-import Header from './Pages/Shared/Header/Header';
-import Home from './Pages/Shared/Home/Home';
-import TaxCalculator from './Pages/TaxCalculator/TaxCalculator';
-import TaxTable from './Pages/TaxTable/TaxTable';
-
+import { Switch, Route } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom/cjs/react-router-dom.min";
+import "./App.css";
+import About from "./Pages/About/About";
+import Career from "./Pages/Career/Career";
+import Login from "./Pages/Login/Login";
+import Services from "./Pages/Services/Services";
+import Footer from "./Pages/Shared/Footer/Footer";
+import Header from "./Pages/Shared/Header/Header";
+import Home from "./Pages/Shared/Home/Home";
+import TaxCalculator from "./Pages/TaxCalculator/TaxCalculator";
+import TaxTable from "./Pages/TaxTable/TaxTable";
 
 function App() {
   return (
     <div className="">
       <BrowserRouter>
-       <Header/>
+        <Header />
         <Switch>
           <Route exact path="/">
-          <Home/>
+            <Home />
           </Route>
           <Route exact path="/home">
-          <Home/>
+            <Home />
           </Route>
           <Route path="/about">
-            <About/>
+            <About />
           </Route>
           <Route path="/services">
-           <Services/>
+            <Services />
           </Route>
           <Route path="/price">
             <TaxTable />
           </Route>
           <Route path="/taxcalc">
-           <TaxCalculator/>
+            <TaxCalculator />
+          </Route>
+          <Route path="/career">
+            <Career />
           </Route>
           <Route path="/login">
             <Login />
           </Route>
         </Switch>
-       <Footer/>
+        <Footer />
       </BrowserRouter>
     </div>
   );
