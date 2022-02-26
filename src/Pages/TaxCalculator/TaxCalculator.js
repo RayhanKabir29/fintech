@@ -104,7 +104,7 @@ const TaxCalculator = () => {
     var additionalCharge = 0;
     checkedItems.forEach((el) => {
       if (el.value === "includes-superannuation") {
-        additionalCharge += 5;
+        additionalCharge = (salary * 10.5) / 100;
       }
       if (el.value === "non-resident") {
         additionalCharge += 7;
@@ -126,18 +126,18 @@ const TaxCalculator = () => {
       }
     });
     if (dateType === "Weakly") {
-      setWeeklySalary(salary / 1 + additionalCharge);
+      setWeeklySalary(salary / 1 - additionalCharge);
       setWeaklyTaxableIncome(salary / 1 - 50);
-      setWeaklySuperAnnuation(0);
+      setWeaklySuperAnnuation((salary * 10.5) / 100);
       setWeaklyTotalTax(0);
       setWeaklyIncomeTax(0);
       setWeaklyMediCare(0);
       setWeaklyOtherTax(0);
       setWeaklyTaxOffset(0);
 
-      setFortnightlySalary(salary * 2 + additionalCharge);
+      setFortnightlySalary(salary * 2 - additionalCharge * 2);
       setFortnightlyTaxableIncome(salary * 2 - 50);
-      setFortnightlySuperAnnuation(0);
+      setFortnightlySuperAnnuation(((salary * 10.5) / 100) * 2);
       setFortnightlyTotalTax(0);
       setFortnightlyIncomeTax(0);
       setFortnightlyMediCare(0);
@@ -146,7 +146,7 @@ const TaxCalculator = () => {
 
       setMonthlySalary(salary * 4 + additionalCharge);
       setMonthlyTaxableIncome(salary * 4 - 50);
-      setMonthlySuperAnnuation(0);
+      setMonthlySuperAnnuation(((salary * 10.5) / 100) * 4);
       setMonthlyTotalTax(0);
       setMonthlyIncomeTax(0);
       setMonthlyMediCare(0);
@@ -155,7 +155,7 @@ const TaxCalculator = () => {
 
       setAnnualSalary(salary * 52 + additionalCharge);
       setAnnualTaxableIncome(salary * 52 - 50);
-      setAnnualSuperAnnuation(0);
+      setAnnualSuperAnnuation(((salary * 10.5) / 100) * 52);
       setAnnualTotalTax(0);
       setAnnualIncomeTax(0);
       setAnnualMediCare(0);
@@ -306,7 +306,7 @@ const TaxCalculator = () => {
                     </select>
                   </div>
                   <div className="annuation-section">
-                    <label htmlFor="annuaation">Your Salary: </label>
+                    <label htmlFor="annuation">Your Salary: </label>
                     <input
                       type="number"
                       name="salaryPercent"
@@ -324,6 +324,7 @@ const TaxCalculator = () => {
           </Col>
           <Col md={6} sm={12} className="gx-0">
             <div className="option-block">
+              {console.log("fff", options)}
               <h5>Options</h5>
               <div className="option-check">
                 {options.map((option, index) => (
@@ -331,7 +332,16 @@ const TaxCalculator = () => {
                     <input
                       class="form-check-input"
                       type="checkbox"
-                      onChange={() => (option.isChecked = !option.isChecked)}
+                      disabled={option.isChecked}
+                      onChange={() =>
+                        // setOptions([
+                        //   ...options.filter(
+                        //     (item) => item !== options[index]
+                        //   ),
+                        //   option,
+                        // ])
+                        (option.isChecked = !option.isChecked)
+                      }
                       defaultChecked={option.isChecked}
                     />
                     <label class="form-check-label" for="flexCheckDefault">
