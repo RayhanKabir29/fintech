@@ -59,9 +59,9 @@ const TaxCalculator = () => {
   const [weaklyTaxOffset, setWeaklyTaxOffset] = useState(0);
   const [fortnightlyTaxOffset, setFortnightlyTaxOffset] = useState(0);
   const [monthlyTaxOffset, setMonthlyTaxOffset] = useState(0);
-  const [annualTaxoffset, setAnnualTaxOffset] = useState(0);
+  const [annualTaxOffset, setAnnualTaxOffset] = useState(0);
 
-  const options = [
+  const checkBoxes = [
     {
       label: "Includes Superannuation",
       isChecked: false,
@@ -100,11 +100,23 @@ const TaxCalculator = () => {
     } else if (year === "2023-24") {
       setCalculated(11);
     }
-    const checkedItems = options.filter((item) => item.isChecked === true);
+    var superAnnuation = 0;
+    if (year === "2021-22") {
+      superAnnuation += 10;
+    } else if (year === "2022-23") {
+      superAnnuation += 10.5;
+    } else if (year === "2023-24") {
+      superAnnuation += 11;
+    }
+    const checkedItems = checkBoxes.filter((item) => item.isChecked === true);
     var additionalCharge = 0;
     checkedItems.forEach((el) => {
       if (el.value === "includes-superannuation") {
-        additionalCharge = (salary * 10.5) / 100;
+        if (year === "2022-23") {
+          additionalCharge = (salary * 10.5) / 100;
+        } else if (year === "2023-24") {
+          additionalCharge = (salary * 11) / 100;
+        }
       }
       if (el.value === "non-resident") {
         additionalCharge += 7;
@@ -116,19 +128,20 @@ const TaxCalculator = () => {
         additionalCharge += 4;
       }
       if (el.value === "help-and-tsl") {
-        additionalCharge += 6;
+        additionalCharge += 0;
       }
       if (el.value === "student-loan") {
-        additionalCharge += 8;
+        additionalCharge += 0;
       }
       if (el.value === "withhold-tax-offsets") {
-        additionalCharge += 9;
+        additionalCharge += 0;
       }
     });
+
     if (dateType === "Weakly") {
       setWeeklySalary(salary / 1 - additionalCharge);
-      setWeaklyTaxableIncome(salary / 1 - 50);
-      setWeaklySuperAnnuation((salary * 10.5) / 100);
+      setWeaklyTaxableIncome(salary);
+      setWeaklySuperAnnuation((salary * superAnnuation) / 100);
       setWeaklyTotalTax(0);
       setWeaklyIncomeTax(0);
       setWeaklyMediCare(0);
@@ -136,26 +149,30 @@ const TaxCalculator = () => {
       setWeaklyTaxOffset(0);
 
       setFortnightlySalary(salary * 2 - additionalCharge * 2);
-      setFortnightlyTaxableIncome(salary * 2 - 50);
-      setFortnightlySuperAnnuation(((salary * 10.5) / 100) * 2);
+      setFortnightlyTaxableIncome(salary * 2);
+      setFortnightlySuperAnnuation(((salary * superAnnuation) / 100) * 2);
       setFortnightlyTotalTax(0);
       setFortnightlyIncomeTax(0);
       setFortnightlyMediCare(0);
       setFortnightlyOtherTax(0);
       setFortnightlyTaxOffset(0);
 
-      setMonthlySalary(salary * 4 + additionalCharge);
-      setMonthlyTaxableIncome(salary * 4 - 50);
-      setMonthlySuperAnnuation(((salary * 10.5) / 100) * 4);
+      setMonthlySalary(
+        Math.ceil((salary / 7) * 30) - Math.ceil((additionalCharge / 7) * 30)
+      );
+      setMonthlyTaxableIncome(Math.ceil((salary / 7) * 30));
+      setMonthlySuperAnnuation(
+        Math.ceil((salary * superAnnuation) / 100 / 7) * 30
+      );
       setMonthlyTotalTax(0);
       setMonthlyIncomeTax(0);
       setMonthlyMediCare(0);
       setMonthlyOtherTax(0);
       setMonthlyTaxOffset(0);
 
-      setAnnualSalary(salary * 52 + additionalCharge);
-      setAnnualTaxableIncome(salary * 52 - 50);
-      setAnnualSuperAnnuation(((salary * 10.5) / 100) * 52);
+      setAnnualSalary(salary * 52 - additionalCharge * 52);
+      setAnnualTaxableIncome(salary * 52);
+      setAnnualSuperAnnuation(((salary * superAnnuation) / 100) * 52);
       setAnnualTotalTax(0);
       setAnnualIncomeTax(0);
       setAnnualMediCare(0);
@@ -163,7 +180,7 @@ const TaxCalculator = () => {
       setAnnualTaxOffset(0);
     } else if (dateType === "Fortnight") {
       setWeeklySalary(salary / 2 + additionalCharge);
-      setWeaklyTaxableIncome(salary / 2 - 50);
+      setWeaklyTaxableIncome(salary / 2);
       setWeaklySuperAnnuation(0);
       setWeaklyTotalTax(0);
       setWeaklyIncomeTax(0);
@@ -172,7 +189,7 @@ const TaxCalculator = () => {
       setWeaklyTaxOffset(0);
 
       setFortnightlySalary(salary / 1 + additionalCharge);
-      setFortnightlyTaxableIncome(salary / 1 - 50);
+      setFortnightlyTaxableIncome(salary / 1);
       setFortnightlySuperAnnuation(0);
       setFortnightlyTotalTax(0);
       setFortnightlyIncomeTax(0);
@@ -181,7 +198,7 @@ const TaxCalculator = () => {
       setFortnightlyTaxOffset(0);
 
       setMonthlySalary(salary * 2 + additionalCharge);
-      setMonthlyTaxableIncome(salary * 2 - 50);
+      setMonthlyTaxableIncome(salary * 2);
       setMonthlySuperAnnuation(0);
       setMonthlyTotalTax(0);
       setMonthlyIncomeTax(0);
@@ -190,7 +207,7 @@ const TaxCalculator = () => {
       setMonthlyTaxOffset(0);
 
       setAnnualSalary(salary * 26 + additionalCharge);
-      setAnnualTaxableIncome(salary * 26 - 50);
+      setAnnualTaxableIncome(salary * 26);
       setAnnualSuperAnnuation(0);
       setAnnualTotalTax(0);
       setAnnualIncomeTax(0);
@@ -199,7 +216,7 @@ const TaxCalculator = () => {
       setAnnualTaxOffset(0);
     } else if (dateType === "Monthly") {
       setWeeklySalary(salary / 4 + additionalCharge);
-      setWeaklyTaxableIncome(salary / 4 - 50);
+      setWeaklyTaxableIncome(salary / 4);
       setWeaklySuperAnnuation(0);
       setWeaklyTotalTax(0);
       setWeaklyIncomeTax(0);
@@ -208,7 +225,7 @@ const TaxCalculator = () => {
       setWeaklyTaxOffset(0);
 
       setFortnightlySalary(salary / 2 + additionalCharge);
-      setFortnightlyTaxableIncome(salary / 2 - 50);
+      setFortnightlyTaxableIncome(salary / 2);
       setFortnightlySuperAnnuation(0);
       setFortnightlyTotalTax(0);
       setFortnightlyIncomeTax(0);
@@ -217,7 +234,7 @@ const TaxCalculator = () => {
       setFortnightlyTaxOffset(0);
 
       setMonthlySalary(salary / 1 + additionalCharge);
-      setMonthlyTaxableIncome(salary / 1 - 50);
+      setMonthlyTaxableIncome(salary);
       setMonthlySuperAnnuation(0);
       setMonthlyTotalTax(0);
       setMonthlyIncomeTax(0);
@@ -226,7 +243,7 @@ const TaxCalculator = () => {
       setMonthlyTaxOffset(0);
 
       setAnnualSalary(salary * 12 + additionalCharge);
-      setAnnualTaxableIncome(salary * 12 - 50);
+      setAnnualTaxableIncome(salary * 12);
       setAnnualSuperAnnuation(0);
       setAnnualTotalTax(0);
       setAnnualIncomeTax(0);
@@ -235,7 +252,7 @@ const TaxCalculator = () => {
       setAnnualTaxOffset(0);
     } else if (dateType === "Yearly") {
       setWeeklySalary(salary / 52 + additionalCharge);
-      setWeaklyTaxableIncome(salary / 52 - 50);
+      setWeaklyTaxableIncome(salary / 52);
       setWeaklySuperAnnuation(0);
       setWeaklyTotalTax(0);
       setWeaklyIncomeTax(0);
@@ -244,7 +261,7 @@ const TaxCalculator = () => {
       setWeaklyTaxOffset(0);
 
       setFortnightlySalary(salary / 26 + additionalCharge);
-      setFortnightlyTaxableIncome(salary / 26 - 50);
+      setFortnightlyTaxableIncome(salary / 26);
       setFortnightlySuperAnnuation(0);
       setFortnightlyTotalTax(0);
       setFortnightlyIncomeTax(0);
@@ -253,7 +270,7 @@ const TaxCalculator = () => {
       setFortnightlyTaxOffset(0);
 
       setMonthlySalary(salary / 12 + additionalCharge);
-      setMonthlyTaxableIncome(salary / 12 - 50);
+      setMonthlyTaxableIncome(salary / 12);
       setMonthlySuperAnnuation(0);
       setMonthlyTotalTax(0);
       setMonthlyIncomeTax(0);
@@ -262,7 +279,7 @@ const TaxCalculator = () => {
       setMonthlyTaxOffset(0);
 
       setAnnualSalary(salary / 1 + additionalCharge);
-      setAnnualTaxableIncome(salary / 1 - 50);
+      setAnnualTaxableIncome(salary);
       setAnnualSuperAnnuation(0);
       setAnnualTotalTax(0);
       setAnnualIncomeTax(0);
@@ -324,19 +341,19 @@ const TaxCalculator = () => {
           </Col>
           <Col md={6} sm={12} className="gx-0">
             <div className="option-block">
-              {console.log("fff", options)}
-              <h5>Options</h5>
+              {console.log("fff", checkBoxes)}
+              <h5>checkBoxes</h5>
               <div className="option-check">
-                {options.map((option, index) => (
+                {checkBoxes.map((option, index) => (
                   <div class="form-check">
                     <input
                       class="form-check-input"
                       type="checkbox"
                       disabled={option.isChecked}
                       onChange={() =>
-                        // setOptions([
-                        //   ...options.filter(
-                        //     (item) => item !== options[index]
+                        // setcheckBoxes([
+                        //   ...checkBoxes.filter(
+                        //     (item) => item !== checkBoxes[index]
                         //   ),
                         //   option,
                         // ])
@@ -419,7 +436,7 @@ const TaxCalculator = () => {
                 <td>{weaklyTaxOffset}</td>
                 <td>{fortnightlyTaxOffset}</td>
                 <td>{monthlyTaxOffset}</td>
-                <td>{annualTaxoffset}</td>
+                <td>{annualTaxOffset}</td>
               </tr>
             </tbody>
           </Table>
