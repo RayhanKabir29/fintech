@@ -61,7 +61,10 @@ const TaxCalculator = () => {
   const [monthlyTaxOffset, setMonthlyTaxOffset] = useState(0);
   const [annualTaxOffset, setAnnualTaxOffset] = useState(0);
 
-  const checkBoxes = [
+  // const checkDependencies = {
+  //   "includes-superannuation": ["working-holiday-visa", "no-tax-free-threshold"],
+  // };
+  const [checkBoxes, setCheckBoxes] = useState([
     {
       label: "Includes Superannuation",
       isChecked: false,
@@ -90,7 +93,7 @@ const TaxCalculator = () => {
       isChecked: false,
       value: "withhold-tax-offsets",
     },
-  ];
+  ]);
   const handleFormSubmit = (e) => {
     e.preventDefault();
     if (year === "2021-22") {
@@ -119,13 +122,13 @@ const TaxCalculator = () => {
         }
       }
       if (el.value === "non-resident") {
-        additionalCharge += 7;
+        additionalCharge = additionalCharge + (salary * 32) / 100;
       }
       if (el.value === "working-holiday-visa") {
-        additionalCharge += 3;
+        additionalCharge += 0;
       }
       if (el.value === "no-tax-free-threshold") {
-        additionalCharge += 4;
+        additionalCharge += 0;
       }
       if (el.value === "help-and-tsl") {
         additionalCharge += 0;
@@ -137,13 +140,17 @@ const TaxCalculator = () => {
         additionalCharge += 0;
       }
     });
-
+    console.log("cccccc", checkedItems);
     if (dateType === "Weakly") {
       setWeeklySalary(salary / 1 - additionalCharge);
       setWeaklyTaxableIncome(salary);
       setWeaklySuperAnnuation((salary * superAnnuation) / 100);
-      setWeaklyTotalTax(0);
-      setWeaklyIncomeTax(0);
+      if (checkedItems.some((e) => e.value === "non-resident")) {
+        setWeaklyTotalTax((salary * 32) / 100);
+      }
+      if (checkedItems.some((e) => e.value === "non-resident")) {
+        setWeaklyIncomeTax((salary * 32) / 100);
+      }
       setWeaklyMediCare(0);
       setWeaklyOtherTax(0);
       setWeaklyTaxOffset(0);
@@ -151,21 +158,29 @@ const TaxCalculator = () => {
       setFortnightlySalary(salary * 2 - additionalCharge * 2);
       setFortnightlyTaxableIncome(salary * 2);
       setFortnightlySuperAnnuation(((salary * superAnnuation) / 100) * 2);
-      setFortnightlyTotalTax(0);
-      setFortnightlyIncomeTax(0);
+      if (checkedItems.some((e) => e.value === "non-resident")) {
+        setFortnightlyTotalTax(((salary * 32) / 100) * 2);
+      }
+      if (checkedItems.some((e) => e.value === "non-resident")) {
+        setFortnightlyIncomeTax(((salary * 32) / 100) * 2);
+      }
       setFortnightlyMediCare(0);
       setFortnightlyOtherTax(0);
       setFortnightlyTaxOffset(0);
 
       setMonthlySalary(
-        Math.ceil((salary / 7) * 30) - Math.ceil((additionalCharge / 7) * 30)
+        Math.ceil((salary / 7) * 30 - (additionalCharge / 7) * 30)
       );
       setMonthlyTaxableIncome(Math.ceil((salary / 7) * 30));
       setMonthlySuperAnnuation(
-        Math.ceil((salary * superAnnuation) / 100 / 7) * 30
+        Math.ceil(((salary * superAnnuation) / 7 / 100) * 30)
       );
-      setMonthlyTotalTax(0);
-      setMonthlyIncomeTax(0);
+      if (checkedItems.some((e) => e.value === "non-resident")) {
+        setMonthlyTotalTax(Math.ceil(((salary * 32) / 100 / 7) * 30));
+      }
+      if (checkedItems.some((e) => e.value === "non-resident")) {
+        setMonthlyIncomeTax(Math.ceil(((salary * 32) / 100 / 7) * 30));
+      }
       setMonthlyMediCare(0);
       setMonthlyOtherTax(0);
       setMonthlyTaxOffset(0);
@@ -173,8 +188,12 @@ const TaxCalculator = () => {
       setAnnualSalary(salary * 52 - additionalCharge * 52);
       setAnnualTaxableIncome(salary * 52);
       setAnnualSuperAnnuation(((salary * superAnnuation) / 100) * 52);
-      setAnnualTotalTax(0);
-      setAnnualIncomeTax(0);
+      if (checkedItems.some((e) => e.value === "non-resident")) {
+        setAnnualTotalTax(((salary * 32) / 100) * 52);
+      }
+      if (checkedItems.some((e) => e.value === "non-resident")) {
+        setAnnualIncomeTax(((salary * 32) / 100) * 52);
+      }
       setAnnualMediCare(0);
       setAnnualOtherTax(0);
       setAnnualTaxOffset(0);
@@ -288,6 +307,7 @@ const TaxCalculator = () => {
       setAnnualTaxOffset(0);
     }
   };
+  console.log(checkBoxes);
   return (
     <div className="my-5">
       <Container>
@@ -342,21 +362,19 @@ const TaxCalculator = () => {
           <Col md={6} sm={12} className="gx-0">
             <div className="option-block">
               {console.log("fff", checkBoxes)}
-              <h5>checkBoxes</h5>
+              <h5>Options</h5>
               <div className="option-check">
                 {checkBoxes.map((option, index) => (
                   <div class="form-check">
                     <input
                       class="form-check-input"
                       type="checkbox"
-                      disabled={option.isChecked}
+                      // disabled={checkDependencies[
+                      //   checkBoxes.find((item) => item.isChecked)?.value
+                      // ]?.includes(option.value)}
+                      // disabled={option.isChecked}
                       onChange={() =>
-                        // setcheckBoxes([
-                        //   ...checkBoxes.filter(
-                        //     (item) => item !== checkBoxes[index]
-                        //   ),
-                        //   option,
-                        // ])
+                        //
                         (option.isChecked = !option.isChecked)
                       }
                       defaultChecked={option.isChecked}
