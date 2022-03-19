@@ -48,32 +48,6 @@ const Career = () => {
                     </FormSelect>
                   </Form.Group>
                   <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>First Name</Form.Label>
-                    <Form.Control
-                      type="text"
-                      name="firstName"
-                      placeholder="John"
-                      required
-                    />
-                  </Form.Group>
-                  <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Last Name</Form.Label>
-                    <Form.Control
-                      type="text"
-                      name="lastName"
-                      placeholder="Doe"
-                    />
-                  </Form.Group>
-                </Col>
-                <Col md={4} xs={12}>
-                  <Form.Group className="mb-4" controlId="formBasicEmail">
-                    <Form.Label>Date Of Birth</Form.Label>
-                    <DatePicker
-                      selected={startDate}
-                      onChange={(date) => setStartDate(date)}
-                    />
-                  </Form.Group>
-                  <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
                     <Form.Control
                       type="email"
@@ -83,21 +57,28 @@ const Career = () => {
                     />
                   </Form.Group>
                   <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Phone</Form.Label>
+                    <Form.Label>Cover Letter</Form.Label>
                     <Form.Control
-                      type="number"
-                      name="phone"
-                      placeholder="0123456789"
-                      required
+                      type="file"
+                      placeholder="Upload Cover Letter"
                     />
                   </Form.Group>
                 </Col>
                 <Col md={4} xs={12}>
                   <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Cover Letter</Form.Label>
+                    <Form.Label>First Name</Form.Label>
                     <Form.Control
-                      type="file"
-                      placeholder="Upload Cover Letter"
+                      type="text"
+                      name="firstName"
+                      placeholder="John"
+                      required
+                    />
+                  </Form.Group>
+                  <Form.Group className="mb-4" controlId="formBasicEmail">
+                    <Form.Label>Date Of Birth</Form.Label>
+                    <DatePicker
+                      selected={startDate}
+                      onChange={(date) => setStartDate(date)}
                     />
                   </Form.Group>
                   <Form.Group className="mb-5" controlId="formBasicEmail">
@@ -106,6 +87,25 @@ const Career = () => {
                       type="file"
                       placeholder="Upload Your Resume"
                       //   name="resume"
+                      required
+                    />
+                  </Form.Group>
+                </Col>
+                <Col md={4} xs={12}>
+                  <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Label>Last Name</Form.Label>
+                    <Form.Control
+                      type="text"
+                      name="lastName"
+                      placeholder="Doe"
+                    />
+                  </Form.Group>
+                  <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Label>Phone</Form.Label>
+                    <Form.Control
+                      type="number"
+                      name="phone"
+                      placeholder="0123456789"
                       required
                     />
                   </Form.Group>

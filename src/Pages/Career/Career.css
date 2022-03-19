@@ -5,7 +5,8 @@
 }
 .career-btn {
   padding: 7px 20px;
-  width: 295px;
+  margin-top: 32px;
+  width: 100%;
   border: none;
   background-color: #ffc412;
   border-radius: 5px;

@@ -140,7 +140,6 @@ const TaxCalculator = () => {
         additionalCharge += 0;
       }
     });
-    console.log("cccccc", checkedItems);
     if (dateType === "Weakly") {
       setWeeklySalary(salary / 1 - additionalCharge);
       setWeaklyTaxableIncome(salary);
@@ -198,110 +197,160 @@ const TaxCalculator = () => {
       setAnnualOtherTax(0);
       setAnnualTaxOffset(0);
     } else if (dateType === "Fortnight") {
-      setWeeklySalary(salary / 2 + additionalCharge);
+      setWeeklySalary(salary / 2 - additionalCharge / 2);
       setWeaklyTaxableIncome(salary / 2);
-      setWeaklySuperAnnuation(0);
-      setWeaklyTotalTax(0);
-      setWeaklyIncomeTax(0);
+      setWeaklySuperAnnuation((salary * superAnnuation) / 100);
+      if (checkedItems.some((e) => e.value === "non-resident")) {
+        setWeaklyTotalTax((salary * 32) / 100 / 2);
+      }
+      if (checkedItems.some((e) => e.value === "non-resident")) {
+        setWeaklyIncomeTax((salary * 32) / 100 / 2);
+      }
       setWeaklyMediCare(0);
       setWeaklyOtherTax(0);
       setWeaklyTaxOffset(0);
 
-      setFortnightlySalary(salary / 1 + additionalCharge);
+      setFortnightlySalary(salary / 1 - additionalCharge);
       setFortnightlyTaxableIncome(salary / 1);
-      setFortnightlySuperAnnuation(0);
-      setFortnightlyTotalTax(0);
-      setFortnightlyIncomeTax(0);
+      setFortnightlySuperAnnuation(((salary * superAnnuation) / 100) * 2);
+      if (checkedItems.some((e) => e.value === "non-resident")) {
+        setFortnightlyTotalTax((salary * 32) / 100);
+      }
+      if (checkedItems.some((e) => e.value === "non-resident")) {
+        setFortnightlyIncomeTax((salary * 32) / 100);
+      }
       setFortnightlyMediCare(0);
       setFortnightlyOtherTax(0);
       setFortnightlyTaxOffset(0);
 
-      setMonthlySalary(salary * 2 + additionalCharge);
+      setMonthlySalary(salary * 2 - additionalCharge * 4);
       setMonthlyTaxableIncome(salary * 2);
-      setMonthlySuperAnnuation(0);
-      setMonthlyTotalTax(0);
-      setMonthlyIncomeTax(0);
+      setMonthlySuperAnnuation(((salary * superAnnuation) / 100) * 4);
+      if (checkedItems.some((e) => e.value === "non-resident")) {
+        setMonthlyTotalTax(((salary * 32) / 100) * 2);
+      }
+      if (checkedItems.some((e) => e.value === "non-resident")) {
+        setMonthlyIncomeTax(((salary * 32) / 100) * 2);
+      }
       setMonthlyMediCare(0);
       setMonthlyOtherTax(0);
       setMonthlyTaxOffset(0);
 
-      setAnnualSalary(salary * 26 + additionalCharge);
+      setAnnualSalary(salary * 26 - additionalCharge * 26);
       setAnnualTaxableIncome(salary * 26);
-      setAnnualSuperAnnuation(0);
-      setAnnualTotalTax(0);
-      setAnnualIncomeTax(0);
+      setAnnualSuperAnnuation(((salary * superAnnuation) / 100) * 52);
+      if (checkedItems.some((e) => e.value === "non-resident")) {
+        setAnnualTotalTax(((salary * 32) / 100) * 26);
+      }
+      if (checkedItems.some((e) => e.value === "non-resident")) {
+        setAnnualIncomeTax(((salary * 32) / 100) * 26);
+      }
       setAnnualMediCare(0);
       setAnnualOtherTax(0);
       setAnnualTaxOffset(0);
     } else if (dateType === "Monthly") {
-      setWeeklySalary(salary / 4 + additionalCharge);
+      setWeeklySalary(salary / 4 - additionalCharge / 4);
       setWeaklyTaxableIncome(salary / 4);
-      setWeaklySuperAnnuation(0);
-      setWeaklyTotalTax(0);
-      setWeaklyIncomeTax(0);
+      setWeaklySuperAnnuation((salary * superAnnuation) / 100);
+      if (checkedItems.some((e) => e.value === "non-resident")) {
+        setWeaklyTotalTax((salary * 32) / 100 / 4);
+      }
+      if (checkedItems.some((e) => e.value === "non-resident")) {
+        setWeaklyIncomeTax((salary * 32) / 100 / 4);
+      }
       setWeaklyMediCare(0);
       setWeaklyOtherTax(0);
       setWeaklyTaxOffset(0);
 
-      setFortnightlySalary(salary / 2 + additionalCharge);
+      setFortnightlySalary(salary / 2 - additionalCharge / 2);
       setFortnightlyTaxableIncome(salary / 2);
-      setFortnightlySuperAnnuation(0);
-      setFortnightlyTotalTax(0);
-      setFortnightlyIncomeTax(0);
+      setFortnightlySuperAnnuation(((salary * superAnnuation) / 100) * 2);
+      if (checkedItems.some((e) => e.value === "non-resident")) {
+        setFortnightlyTotalTax((salary * 32) / 100 / 2);
+      }
+      if (checkedItems.some((e) => e.value === "non-resident")) {
+        setFortnightlyIncomeTax((salary * 32) / 100 / 2);
+      }
       setFortnightlyMediCare(0);
       setFortnightlyOtherTax(0);
       setFortnightlyTaxOffset(0);
 
-      setMonthlySalary(salary / 1 + additionalCharge);
+      setMonthlySalary(salary / 1 - additionalCharge);
       setMonthlyTaxableIncome(salary);
-      setMonthlySuperAnnuation(0);
-      setMonthlyTotalTax(0);
-      setMonthlyIncomeTax(0);
+      setMonthlySuperAnnuation(((salary * superAnnuation) / 100) * 4);
+      if (checkedItems.some((e) => e.value === "non-resident")) {
+        setMonthlyTotalTax((salary * 32) / 100);
+      }
+      if (checkedItems.some((e) => e.value === "non-resident")) {
+        setMonthlyIncomeTax((salary * 32) / 100);
+      }
       setMonthlyMediCare(0);
       setMonthlyOtherTax(0);
       setMonthlyTaxOffset(0);
 
-      setAnnualSalary(salary * 12 + additionalCharge);
+      setAnnualSalary(salary * 12 - additionalCharge * 12);
       setAnnualTaxableIncome(salary * 12);
-      setAnnualSuperAnnuation(0);
-      setAnnualTotalTax(0);
-      setAnnualIncomeTax(0);
+      setAnnualSuperAnnuation(((salary * superAnnuation) / 100) * 52);
+      if (checkedItems.some((e) => e.value === "non-resident")) {
+        setAnnualTotalTax(((salary * 32) / 100) * 12);
+      }
+      if (checkedItems.some((e) => e.value === "non-resident")) {
+        setAnnualIncomeTax(((salary * 32) / 100) * 12);
+      }
       setAnnualMediCare(0);
       setAnnualOtherTax(0);
       setAnnualTaxOffset(0);
     } else if (dateType === "Yearly") {
-      setWeeklySalary(salary / 52 + additionalCharge);
-      setWeaklyTaxableIncome(salary / 52);
-      setWeaklySuperAnnuation(0);
-      setWeaklyTotalTax(0);
-      setWeaklyIncomeTax(0);
+      setWeeklySalary(Math.ceil(salary / 52 - additionalCharge / 52));
+      setWeaklyTaxableIncome(Math.ceil(salary / 52));
+      setWeaklySuperAnnuation(Math.ceil((salary * superAnnuation) / 100 / 52));
+      if (checkedItems.some((e) => e.value === "non-resident")) {
+        setWeaklyTotalTax(Math.ceil((salary * 32) / 100 / 52));
+      }
+      if (checkedItems.some((e) => e.value === "non-resident")) {
+        setWeaklyIncomeTax(Math.ceil((salary * 32) / 100 / 52));
+      }
       setWeaklyMediCare(0);
       setWeaklyOtherTax(0);
       setWeaklyTaxOffset(0);
 
-      setFortnightlySalary(salary / 26 + additionalCharge);
-      setFortnightlyTaxableIncome(salary / 26);
-      setFortnightlySuperAnnuation(0);
-      setFortnightlyTotalTax(0);
-      setFortnightlyIncomeTax(0);
+      setFortnightlySalary(Math.ceil(salary / 26 - additionalCharge / 26));
+      setFortnightlyTaxableIncome(Math.ceil(salary / 26));
+      setFortnightlySuperAnnuation(
+        Math.ceil((salary * superAnnuation) / 100 / 26)
+      );
+      if (checkedItems.some((e) => e.value === "non-resident")) {
+        setFortnightlyTotalTax(Math.ceil((salary * 32) / 100 / 26));
+      }
+      if (checkedItems.some((e) => e.value === "non-resident")) {
+        setFortnightlyIncomeTax(Math.ceil((salary * 32) / 100 / 26));
+      }
       setFortnightlyMediCare(0);
       setFortnightlyOtherTax(0);
       setFortnightlyTaxOffset(0);
 
-      setMonthlySalary(salary / 12 + additionalCharge);
+      setMonthlySalary(salary / 12 - additionalCharge / 12);
       setMonthlyTaxableIncome(salary / 12);
-      setMonthlySuperAnnuation(0);
-      setMonthlyTotalTax(0);
-      setMonthlyIncomeTax(0);
+      setMonthlySuperAnnuation(Math.ceil(salary * superAnnuation) / 100 / 12);
+      if (checkedItems.some((e) => e.value === "non-resident")) {
+        setMonthlyTotalTax(Math.ceil((salary * 32) / 100 / 12));
+      }
+      if (checkedItems.some((e) => e.value === "non-resident")) {
+        setMonthlyIncomeTax(Math.ceil((salary * 32) / 100 / 12));
+      }
       setMonthlyMediCare(0);
       setMonthlyOtherTax(0);
       setMonthlyTaxOffset(0);
 
-      setAnnualSalary(salary / 1 + additionalCharge);
+      setAnnualSalary(salary / 1 - additionalCharge);
       setAnnualTaxableIncome(salary);
-      setAnnualSuperAnnuation(0);
-      setAnnualTotalTax(0);
-      setAnnualIncomeTax(0);
+      setAnnualSuperAnnuation((salary * superAnnuation) / 100);
+      if (checkedItems.some((e) => e.value === "non-resident")) {
+        setAnnualTotalTax((salary * 32) / 100);
+      }
+      if (checkedItems.some((e) => e.value === "non-resident")) {
+        setAnnualIncomeTax((salary * 32) / 100);
+      }
       setAnnualMediCare(0);
       setAnnualOtherTax(0);
       setAnnualTaxOffset(0);
