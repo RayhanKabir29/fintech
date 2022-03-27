@@ -1,6 +1,7 @@
 import { Switch, Route } from "react-router-dom";
 import { BrowserRouter } from "react-router-dom/cjs/react-router-dom.min";
 import "./App.css";
+import DetailsCalc from "./DetailsCalc/DetailsCalc";
 import About from "./Pages/About/About";
 import Career from "./Pages/Career/Career";
 import Login from "./Pages/Login/Login";
@@ -35,12 +36,16 @@ function App() {
           <Route path="/taxcalc">
             <TaxCalculator />
           </Route>
+          <Route path="/detailscalc">
+            <DetailsCalc />
+          </Route>
           <Route path="/career">
             <Career />
           </Route>
           <Route path="/login">
             <Login />
           </Route>
+          
         </Switch>
         <Footer />
       </BrowserRouter>

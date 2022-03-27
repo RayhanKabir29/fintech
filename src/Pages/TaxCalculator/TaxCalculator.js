@@ -356,7 +356,6 @@ const TaxCalculator = () => {
       setAnnualTaxOffset(0);
     }
   };
-  console.log(checkBoxes);
   return (
     <div className="my-5">
       <Container>
@@ -410,7 +409,6 @@ const TaxCalculator = () => {
           </Col>
           <Col md={6} sm={12} className="gx-0">
             <div className="option-block">
-              {console.log("fff", checkBoxes)}
               <h5>Options</h5>
               <div className="option-check">
                 {checkBoxes.map((option, index) => (
