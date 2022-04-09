@@ -66,29 +66,44 @@ const TaxCalculator = () => {
   // };
   const [checkBoxes, setCheckBoxes] = useState([
     {
+      id: "1",
       label: "Includes Superannuation",
       isChecked: false,
       value: "includes-superannuation",
     },
     {
+      id: "2",
       label: "Non-Resident",
       isChecked: false,
       value: "non-resident",
     },
 
     {
+      id: "3",
       label: "Working Holiday Visa",
       isChecked: false,
       value: "working-holiday-visa",
     },
     {
+      id: "4",
       label: "No tax-free threshold",
       isChecked: false,
       value: "no-tax-free-threshold",
     },
-    { label: "HELP and TSL", isChecked: false, value: "help-and-tsl" },
-    { label: "Student Loan", isChecked: false, value: "student-loan" },
     {
+      id: "5",
+      label: "HELP and TSL",
+      isChecked: false,
+      value: "help-and-tsl",
+    },
+    {
+      id: "6",
+      label: "Student Loan",
+      isChecked: false,
+      value: "student-loan",
+    },
+    {
+      id: "7",
       label: "Withhold Tax Offsets",
       isChecked: false,
       value: "withhold-tax-offsets",
@@ -412,22 +427,24 @@ const TaxCalculator = () => {
               <h5>Options</h5>
               <div className="option-check">
                 {checkBoxes.map((option, index) => (
-                  <div className="form-check">
-                    <input
-                      className="form-check-input"
-                      type="checkbox"
-                      // disabled={checkDependencies[
-                      //   checkBoxes.find((item) => item.isChecked)?.value
-                      // ]?.includes(option.value)}
-                      // disabled={option.isChecked}
-                      onChange={() =>
-                        //
-                        (option.isChecked = !option.isChecked)
-                      }
-                      defaultChecked={option.isChecked}
-                    />
-                    <label className="form-check-label">{option.label}</label>
-                  </div>
+                  <li key={option.id}>
+                    <div className="form-check">
+                      <input
+                        className="form-check-input"
+                        type="checkbox"
+                        // disabled={checkDependencies[
+                        //   checkBoxes.find((item) => item.isChecked)?.value
+                        // ]?.includes(option.value)}
+                        // disabled={option.isChecked}
+                        onChange={() =>
+                          //
+                          (option.isChecked = !option.isChecked)
+                        }
+                        defaultChecked={option.isChecked}
+                      />
+                      <label className="form-check-label">{option.label}</label>
+                    </div>
+                  </li>
                 ))}
               </div>
             </div>
