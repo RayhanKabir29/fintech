@@ -652,7 +652,7 @@ const DetailsCalc = () => {
                 <Table>
                   <tbody>
                     <tr>
-                      <th>Base salary</th>
+                      <th style={{ width: "641px" }}>Base salary</th>
                       <th>{weaklyTaxableIncome}</th>
                       <th>20</th>
                       <th>30</th>
