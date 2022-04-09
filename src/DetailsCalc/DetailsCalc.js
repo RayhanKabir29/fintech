@@ -29,7 +29,7 @@ const DetailsCalc = () => {
   const [income, setIncome] = useState();
   const [weaklyTaxableIncome, setWeaklyTaxableIncome] = useState(0);
 
-  const [checkBox, setCheckBox] = useState([]);
+  // const [checkBox, setCheckBox] = useState([]);
   // const checkChange = (value) => {
   //   if (checked.indexOf(value) !== -1) {
   //     setCheckBox(checked.filter((checkBox) => checkBox !== value));
@@ -63,7 +63,7 @@ const DetailsCalc = () => {
               <Row>
                 <Col md={8} xs={12}>
                   <div className="income">
-                    <label htmlFor="salary">Salary: </label> <br />
+                    <label>Salary: </label> <br />
                     <input
                       type="number"
                       name="incomeInput"
@@ -621,50 +621,56 @@ const DetailsCalc = () => {
         </Row>
         <Row>
           <Table borderless style={{ marginLeft: "25px" }}>
-            <tr>
-              <th style={{ width: "641px" }}>Pay</th>
-              <th style={{ width: "153px" }}>Pay</th>
-              <th style={{ width: "153px" }}>Pay</th>
-              <th style={{ width: "153px" }}>Pay</th>
-              <th>Pay</th>
-            </tr>
+            <tbody>
+              <tr>
+                <th style={{ width: "641px" }}>Pay</th>
+                <th style={{ width: "153px" }}>Pay</th>
+                <th style={{ width: "153px" }}>Pay</th>
+                <th style={{ width: "153px" }}>Pay</th>
+                <th>Pay</th>
+              </tr>
+            </tbody>
           </Table>
           <Accordion defaultActiveKey="0">
             <Accordion.Item eventKey="0">
               <Accordion.Header>
                 <Table>
-                  <tr>
-                    <th style={{ width: "641px" }}>Taxable Income</th>
-                    <th style={{ width: "153px" }}>{weaklyTaxableIncome}</th>
-                    <th>20</th>
-                    <th>30</th>
-                    <th>40</th>
-                  </tr>
+                  <tbody>
+                    <tr>
+                      <th style={{ width: "641px" }}>Taxable Income</th>
+                      <th style={{ width: "153px" }}>{weaklyTaxableIncome}</th>
+                      <th>20</th>
+                      <th>30</th>
+                      <th>40</th>
+                    </tr>
+                  </tbody>
                 </Table>
               </Accordion.Header>
               <Accordion.Body>
                 <Table>
-                  <tr>
-                    <th>Base salary</th>
-                    <th>{weaklyTaxableIncome}</th>
-                    <th>20</th>
-                    <th>30</th>
-                    <th>40</th>
-                  </tr>
-                  <tr>
-                    <th>Deduction</th>
-                    <th>10</th>
-                    <th>20</th>
-                    <th>30</th>
-                    <th>40</th>
-                  </tr>
-                  <tr>
-                    <th>Capital</th>
-                    <th>10</th>
-                    <th>20</th>
-                    <th>30</th>
-                    <th>40</th>
-                  </tr>
+                  <tbody>
+                    <tr>
+                      <th>Base salary</th>
+                      <th>{weaklyTaxableIncome}</th>
+                      <th>20</th>
+                      <th>30</th>
+                      <th>40</th>
+                    </tr>
+                    <tr>
+                      <th>Deduction</th>
+                      <th>10</th>
+                      <th>20</th>
+                      <th>30</th>
+                      <th>40</th>
+                    </tr>
+                    <tr>
+                      <th>Capital</th>
+                      <th>10</th>
+                      <th>20</th>
+                      <th>30</th>
+                      <th>40</th>
+                    </tr>
+                  </tbody>
                 </Table>
               </Accordion.Body>
             </Accordion.Item>

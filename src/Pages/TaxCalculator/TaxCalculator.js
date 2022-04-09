@@ -366,7 +366,7 @@ const TaxCalculator = () => {
               <div className="income-form">
                 <form onSubmit={(e) => handleFormSubmit(e)}>
                   <div className="salary">
-                    <label htmlFor="salary">Your Salary: </label>${" "}
+                    <label>Your Salary: </label>${" "}
                     <input
                       type="number"
                       name="salaryInput"
@@ -380,7 +380,7 @@ const TaxCalculator = () => {
                     </select>
                   </div>
                   <div className="tax-year">
-                    <label htmlFor="tax">Tax Year: </label>
+                    <label>Tax Year: </label>
                     <select
                       name="economicYear"
                       onChange={(e) => setYear(e.target.value)}
@@ -391,7 +391,7 @@ const TaxCalculator = () => {
                     </select>
                   </div>
                   <div className="annuation-section">
-                    <label htmlFor="annuation">Your Salary: </label>
+                    <label>Your Salary: </label>
                     <input
                       type="number"
                       name="salaryPercent"
