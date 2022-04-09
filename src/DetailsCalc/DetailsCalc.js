@@ -39,11 +39,13 @@ const DetailsCalc = () => {
 
   const [optionCheck, setOptionCheck] = useState([
     {
+      id: "1",
       label: "Includes Superannuation",
       isChecked: false,
       value: "superannuation",
     },
     {
+      id: "2",
       label: "Student loan",
       isChecked: false,
       value: "student-loan",
@@ -133,20 +135,20 @@ const DetailsCalc = () => {
           <Col md={6} sm={12}>
             <p>Options</p>
             {optionCheck.map((option, index) => (
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  onChange={() =>
-                    //
-                    (option.isChecked = !option.isChecked)
-                  }
-                  defaultChecked={option.isChecked}
-                />
-                <label className="form-check-label">
-                  {option.label}
-                </label>
-              </div>
+              <li key={option.id}>
+                <div className="form-check">
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    onChange={() =>
+                      //
+                      (option.isChecked = !option.isChecked)
+                    }
+                    defaultChecked={option.isChecked}
+                  />
+                  <label className="form-check-label">{option.label}</label>
+                </div>
+              </li>
             ))}
           </Col>
         </Row>

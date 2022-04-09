@@ -366,7 +366,7 @@ const TaxCalculator = () => {
               <div className="income-form">
                 <form onSubmit={(e) => handleFormSubmit(e)}>
                   <div className="salary">
-                    <label>Your Salary: </label>${" "}
+                    <label>Your Salary: </label>
                     <input
                       type="number"
                       name="salaryInput"

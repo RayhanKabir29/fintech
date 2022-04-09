@@ -1,3 +1,6 @@
 .accordian-data {
   margin-left: 27px;
 }
+li{
+  list-style: none;
+}

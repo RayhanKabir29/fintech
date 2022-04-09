@@ -16,12 +16,14 @@ const Choose = () => {
                 <Card.Title>Why Choose Global Tax Online?</Card.Title>
                 <Card.Text>
                   <Row>
-                    <ul className="p-5">
-                      <li>Secure online portal</li>
-                      <li>Access to Expert Accountants</li>
-                      <li>Affordable, fixed price fee</li>
-                      <li>Fast lodgements -maximised Refunds</li>
-                    </ul>
+                    <span>
+                      <ul className="p-5">
+                        <li>Secure online portal</li>
+                        <li>Access to Expert Accountants</li>
+                        <li>Affordable, fixed price fee</li>
+                        <li>Fast lodgements -maximized Refunds</li>
+                      </ul>
+                    </span>
                   </Row>
                   <Row>
                     <Col sm={6} md={6}>
@@ -40,14 +42,18 @@ const Choose = () => {
               <Card.Body>
                 <Card.Text>
                   <Row>
-                    <ul className="p-5">
-                      <li>
-                        15 Years of Australian Tax and Accounting Experience
-                      </li>
-                      <li>Maximize your deductions to maximize your refunds</li>
-                      <li>On spot tax secure Tax lodgments</li>
-                      <li>Visit our conveniently located offices</li>
-                    </ul>
+                    <span>
+                      <ul className="p-5">
+                        <li>
+                          15 Years of Australian Tax and Accounting Experience
+                        </li>
+                        <li>
+                          Maximize your deductions to maximize your refunds
+                        </li>
+                        <li>On spot tax secure Tax lodgments</li>
+                        <li>Visit our conveniently located offices</li>
+                      </ul>
+                    </span>
                   </Row>
                   <Row>
                     <Col sm={6} md={6}>
