@@ -30,12 +30,12 @@ const DetailsCalc = () => {
   const [weaklyTaxableIncome, setWeaklyTaxableIncome] = useState(0);
 
   const [checkBox, setCheckBox] = useState([]);
-  const checkChange = (value) => {
-    if (checked.indexOf(value) !== -1) {
-      setCheckBox(checked.filter((checkBox) => checkBox !== value));
-    } else {
-      setChecked([...checked, value]);
-    }
+  // const checkChange = (value) => {
+  //   if (checked.indexOf(value) !== -1) {
+  //     setCheckBox(checked.filter((checkBox) => checkBox !== value));
+  //   } else {
+  //     setChecked([...checked, value]);
+  //   }
 
   const [optionCheck, setOptionCheck] = useState([
     {
