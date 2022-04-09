@@ -412,9 +412,9 @@ const TaxCalculator = () => {
               <h5>Options</h5>
               <div className="option-check">
                 {checkBoxes.map((option, index) => (
-                  <div class="form-check">
+                  <div className="form-check">
                     <input
-                      class="form-check-input"
+                      className="form-check-input"
                       type="checkbox"
                       // disabled={checkDependencies[
                       //   checkBoxes.find((item) => item.isChecked)?.value
@@ -426,9 +426,7 @@ const TaxCalculator = () => {
                       }
                       defaultChecked={option.isChecked}
                     />
-                    <label class="form-check-label" for="flexCheckDefault">
-                      {option.label}
-                    </label>
+                    <label className="form-check-label">{option.label}</label>
                   </div>
                 ))}
               </div>

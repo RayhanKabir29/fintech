@@ -143,7 +143,7 @@ const DetailsCalc = () => {
                   }
                   defaultChecked={option.isChecked}
                 />
-                <label className="form-check-label" for="flexCheckDefault">
+                <label className="form-check-label">
                   {option.label}
                 </label>
               </div>
