@@ -390,7 +390,9 @@ const TaxCalculator = () => {
                     />
                     <select onChange={(e) => setDateType(e.target.value)}>
                       {dateTypes.map((data) => (
-                        <option defaultValue={data.value}>{data.value} </option>
+                        <option defaultValue={data.value} key={data.value}>
+                          {data.value}
+                        </option>
                       ))}
                     </select>
                   </div>
@@ -401,7 +403,9 @@ const TaxCalculator = () => {
                       onChange={(e) => setYear(e.target.value)}
                     >
                       {years.map((data) => (
-                        <option defaultValue={data.value}>{data.value}</option>
+                        <option defaultValue={data.value} key={data.value}>
+                          {data.value}
+                        </option>
                       ))}
                     </select>
                   </div>
