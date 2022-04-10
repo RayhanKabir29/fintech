@@ -11,12 +11,21 @@ import {
 } from "react-bootstrap";
 
 const DetailsCalc = () => {
+  const [dateTypes, setDateTypes] = useState([
+    { value: "Select Payment Type" },
+    { value: "Weakly" },
+    { value: "Fortnight" },
+    { value: "Monthly" },
+    { value: "Yearly" },
+  ]);
+  const [dateType, setDateType] = useState(null);
+
   const [mediCare, setMedicare] = useState(false);
   const [dependent, setDependent] = useState(false);
   const [spouse, setSpouse] = useState(false);
   const [sapto, setSapto] = useState(false);
   const [noSuperAnnuation, setNoSuperAnnuation] = useState(false);
-  const [salarySacrifice, setSalarySacrifice] = useState(false);
+  const [incomeSacrifice, setincomeSacrifice] = useState(false);
   const [voluntarySuperAnnuation, setVoluntarySuperAnnuation] = useState(false);
   const [carryForward, setCarryForward] = useState(false);
   const [contribution, setContribution] = useState(false);
@@ -28,14 +37,9 @@ const DetailsCalc = () => {
 
   const [income, setIncome] = useState();
   const [weaklyTaxableIncome, setWeaklyTaxableIncome] = useState(0);
-
-  // const [checkBox, setCheckBox] = useState([]);
-  // const checkChange = (value) => {
-  //   if (checked.indexOf(value) !== -1) {
-  //     setCheckBox(checked.filter((checkBox) => checkBox !== value));
-  //   } else {
-  //     setChecked([...checked, value]);
-  //   }
+  const [fortnightlyTaxableIncome, setFortnightlyTaxableIncome] = useState(0);
+  const [monthlyTaxableIncome, setMonthlyTaxableIncome] = useState(0);
+  const [annuallyTaxableIncome, setAnnuallyTaxableIncome] = useState(0);
 
   const [optionCheck, setOptionCheck] = useState([
     {
@@ -54,7 +58,52 @@ const DetailsCalc = () => {
 
   const handleOnChange = (e) => {
     e.preventDefault();
-    setWeaklyTaxableIncome(income - 50);
+    const checkedItems = optionCheck.filter((item) => item.isChecked === true);
+    var additionalCharge = 0;
+    checkedItems.forEach((el) => {
+      if (el.value === "includes-superannuation") {
+        additionalCharge = (income * 10.5) / 100;
+      }
+      if (el.value === "student-loan") {
+        additionalCharge += 0;
+      }
+    });
+    if (dateType === "Weakly") {
+      setWeaklyTaxableIncome(income / 1 - additionalCharge);
+
+      if (checkedItems.some((e) => e.value === "non-resident")) {
+        setWeaklyTaxableIncome((income * 32) / 100);
+      }
+      if (checkedItems.some((e) => e.value === "student-loan")) {
+        setWeaklyTaxableIncome((income * 32) / 100);
+      }
+
+      setFortnightlyTaxableIncome(income * 2 - additionalCharge * 2);
+      if (checkedItems.some((e) => e.value === "non-resident")) {
+        setFortnightlyTaxableIncome(((income * 32) / 100) * 2);
+      }
+      if (checkedItems.some((e) => e.value === "student-loan")) {
+        setFortnightlyTaxableIncome(((income * 32) / 100) * 2);
+      }
+      setMonthlyTaxableIncome(
+        Math.ceil((income / 7) * 30 - (additionalCharge / 7) * 30)
+      );
+      if (checkedItems.some((e) => e.value === "non-resident")) {
+        setMonthlyTaxableIncome(Math.ceil(((income * 32) / 100 / 7) * 30));
+      }
+      if (checkedItems.some((e) => e.value === "student-loan")) {
+        setMonthlyTaxableIncome(Math.ceil(((income * 32) / 100 / 7) * 30));
+      }
+
+      setAnnuallyTaxableIncome(income * 52 - additionalCharge * 52);
+
+      if (checkedItems.some((e) => e.value === "non-resident")) {
+        setAnnuallyTaxableIncome(((income * 32) / 100) * 52);
+      }
+      if (checkedItems.some((e) => e.value === "student-loan")) {
+        setAnnuallyTaxableIncome(((income * 32) / 100) * 52);
+      }
+    }
   };
   return (
     <>
@@ -65,7 +114,7 @@ const DetailsCalc = () => {
               <Row>
                 <Col md={8} xs={12}>
                   <div className="income">
-                    <label>Salary: </label> <br />
+                    <label>income: </label> <br />
                     <input
                       type="number"
                       name="incomeInput"
@@ -76,13 +125,20 @@ const DetailsCalc = () => {
                 </Col>
                 <Col md={4} xs={12}>
                   <Form.Label>Per Cycle</Form.Label>
-                  <Form.Select aria-label="Default select example">
+                  <select onChange={(e) => setDateType(e.target.value)}>
+                    {dateTypes.map((data) => (
+                      <option defaultValue={data.value} key={data.value}>
+                        {data.value}
+                      </option>
+                    ))}
+                  </select>
+                  {/* <Form.Select aria-label="Default select example">
                     <option value="0">Annual </option>
                     <option value="1">Monthly</option>
                     <option value="2">Fortnightly</option>
                     <option value="3">Weakly</option>
                     <option value="4">Daily</option>
-                  </Form.Select>
+                  </Form.Select> */}
                 </Col>
               </Row>
             </form>
@@ -92,8 +148,8 @@ const DetailsCalc = () => {
                   onClick={() => setPartTime(!partTime)}
                   className="form-check-input"
                   type="checkbox"
-                  value="salary-sacrifice"
-                  id="salary-sacrifice"
+                  value="income-sacrifice"
+                  id="income-sacrifice"
                 />
                 <label className="form-check-label">Pro-rata / Part-time</label>
               </div>
@@ -191,17 +247,17 @@ const DetailsCalc = () => {
                   <Row>
                     <div className="form-check">
                       <input
-                        onClick={() => setSalarySacrifice(!salarySacrifice)}
+                        onClick={() => setincomeSacrifice(!incomeSacrifice)}
                         className="form-check-input"
                         type="checkbox"
                         value=""
-                        id="salary-sacrifice"
+                        id="income-sacrifice"
                       />
                       <label className="form-check-label">
-                        Salary Sacrifice Superannuation
+                        income Sacrifice Superannuation
                       </label>
                     </div>
-                    {salarySacrifice ? (
+                    {incomeSacrifice ? (
                       <div>
                         <div className="form-group">
                           <label>Amount</label>
@@ -219,7 +275,7 @@ const DetailsCalc = () => {
                             <option value="2">Weekly</option>
                             <option value="3">FortNightly</option>
                             <option value="4">Monthly</option>
-                            <option value="5">Annualy</option>
+                            <option value="5">Annually</option>
                           </Form.Select>
                         </div>
                       </div>
@@ -255,10 +311,10 @@ const DetailsCalc = () => {
                           <input
                             type="checkbox"
                             className="form-check-input"
-                            id="maximise-govt"
+                            id="maximize-govt"
                           />
                           <label className="form-check-label">
-                            Maximise Government super co-contribution
+                            Maximize Government super co-contribution
                           </label>
                         </div>
                         <div className="form-check">
@@ -424,6 +480,7 @@ const DetailsCalc = () => {
                         type="checkbox"
                         value=""
                         id="medicare"
+                        disabled={nonResident}
                       />
                       <label className="form-check-label">
                         Medicare Exemption
@@ -445,8 +502,11 @@ const DetailsCalc = () => {
                         className="form-check-input"
                         type="checkbox"
                         value="Dependant Children"
+                        disabled={nonResident}
                       />
-                      <label>Dependant Children</label>
+                      <label className="form-check-label">
+                        Dependant Children
+                      </label>
                     </div>
                     {dependent ? (
                       <div>
@@ -489,8 +549,11 @@ const DetailsCalc = () => {
                         type="checkbox"
                         value="set-spouse"
                         id="set-spouse"
+                        disabled={nonResident}
                       />
-                      <label>Spouse (married or de-facto)</label>
+                      <label className="form-check-label">
+                        Spouse (married or de-facto)
+                      </label>
                     </div>
                     {spouse ? (
                       <div>
@@ -514,7 +577,9 @@ const DetailsCalc = () => {
                         type="checkbox"
                         value="sapto"
                       />
-                      <label>Spouse (married or de-facto)</label>
+                      <label className="form-check-label">
+                        Senior & pensioner offset (SAPTO)
+                      </label>
                     </div>
                     {sapto ? null : null}
                   </Row>
@@ -524,7 +589,7 @@ const DetailsCalc = () => {
             <Accordion defaultActiveKey="0" className="my-3">
               <Accordion.Item eventKey="1">
                 <Accordion.Header>
-                  Deductions, Salary Sacrifice & Other income
+                  Deductions, income Sacrifice & Other income
                 </Accordion.Header>
                 <Accordion.Body>
                   <Row>
@@ -539,7 +604,7 @@ const DetailsCalc = () => {
                   </Row>
                   <Row>
                     <Col md={6}>
-                      <Form.Label>Salary Sacrifice</Form.Label>
+                      <Form.Label>income Sacrifice</Form.Label>
                       <Form.Group className="mb-3">
                         <Form.Control
                           type="Number"
@@ -641,9 +706,9 @@ const DetailsCalc = () => {
                     <tr>
                       <th style={{ width: "641px" }}>Taxable Income</th>
                       <th style={{ width: "153px" }}>{weaklyTaxableIncome}</th>
-                      <th>20</th>
-                      <th>30</th>
-                      <th>40</th>
+                      <th>{fortnightlyTaxableIncome}</th>
+                      <th>{monthlyTaxableIncome}</th>
+                      <th>{annuallyTaxableIncome}</th>
                     </tr>
                   </tbody>
                 </Table>
@@ -652,11 +717,11 @@ const DetailsCalc = () => {
                 <Table>
                   <tbody>
                     <tr>
-                      <th style={{ width: "641px" }}>Base salary</th>
+                      <th style={{ width: "641px" }}>Base income</th>
                       <th>{weaklyTaxableIncome}</th>
-                      <th>20</th>
-                      <th>30</th>
-                      <th>40</th>
+                      <th>{fortnightlyTaxableIncome}</th>
+                      <th>{monthlyTaxableIncome}</th>
+                      <th>{annuallyTaxableIncome}</th>
                     </tr>
                     <tr>
                       <th>Deduction</th>
