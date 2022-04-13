@@ -19,6 +19,7 @@ const DetailsCalc = () => {
     { value: "Yearly" },
   ]);
   const [dateType, setDateType] = useState(null);
+  const [renderMe, setRenderMe] = useState(false);
 
   const [mediCare, setMedicare] = useState(false);
   const [dependent, setDependent] = useState(false);
@@ -56,8 +57,15 @@ const DetailsCalc = () => {
     },
   ]);
 
+  const getData = (e) => {
+    setDateType(e);
+    setRenderMe(!renderMe);
+    console.log("check", dateType);
+  };
+
   const handleOnChange = (e) => {
     e.preventDefault();
+    console.log("called", dateType);
     const checkedItems = optionCheck.filter((item) => item.isChecked === true);
     var additionalCharge = 0;
     checkedItems.forEach((el) => {
@@ -69,42 +77,81 @@ const DetailsCalc = () => {
       }
     });
     if (dateType === "Weakly") {
-      setWeaklyTaxableIncome(income / 1 - additionalCharge);
+      setWeaklyTaxableIncome(income);
+      console.log("fun", dateType);
+      setRenderMe(!renderMe);
 
-      if (checkedItems.some((e) => e.value === "non-resident")) {
-        setWeaklyTaxableIncome((income * 32) / 100);
+      if (checkedItems.some((e) => e.value === "includes-superannuation")) {
+        setWeaklyTaxableIncome(income + additionalCharge);
       }
       if (checkedItems.some((e) => e.value === "student-loan")) {
-        setWeaklyTaxableIncome((income * 32) / 100);
+        setWeaklyTaxableIncome(income+additionalCharge);
       }
 
       setFortnightlyTaxableIncome(income * 2 - additionalCharge * 2);
-      if (checkedItems.some((e) => e.value === "non-resident")) {
-        setFortnightlyTaxableIncome(((income * 32) / 100) * 2);
+      if (checkedItems.some((e) => e.value === "includes-superannuation")) {
+        setFortnightlyTaxableIncome(income + additionalCharge);
       }
       if (checkedItems.some((e) => e.value === "student-loan")) {
-        setFortnightlyTaxableIncome(((income * 32) / 100) * 2);
+        setFortnightlyTaxableIncome(income + additionalCharge);
       }
       setMonthlyTaxableIncome(
         Math.ceil((income / 7) * 30 - (additionalCharge / 7) * 30)
       );
-      if (checkedItems.some((e) => e.value === "non-resident")) {
-        setMonthlyTaxableIncome(Math.ceil(((income * 32) / 100 / 7) * 30));
+      if (checkedItems.some((e) => e.value === "includes-superannuation")) {
+        setMonthlyTaxableIncome(income + additionalCharge);
       }
       if (checkedItems.some((e) => e.value === "student-loan")) {
-        setMonthlyTaxableIncome(Math.ceil(((income * 32) / 100 / 7) * 30));
+        setMonthlyTaxableIncome(income + additionalCharge);
       }
 
       setAnnuallyTaxableIncome(income * 52 - additionalCharge * 52);
 
-      if (checkedItems.some((e) => e.value === "non-resident")) {
-        setAnnuallyTaxableIncome(((income * 32) / 100) * 52);
+      if (checkedItems.some((e) => e.value === "includes-superannuation")) {
+        setAnnuallyTaxableIncome(income + additionalCharge);
       }
       if (checkedItems.some((e) => e.value === "student-loan")) {
-        setAnnuallyTaxableIncome(((income * 32) / 100) * 52);
+        setAnnuallyTaxableIncome(income + additionalCharge);
       }
+      setRenderMe(!renderMe);
+    } else if (dateType === "Fortnight") {
+      setWeaklyTaxableIncome(income / 2);
+
+      if (checkedItems.some((e) => e.value === "includes-superannuation")) {
+        setWeaklyTaxableIncome(income + additionalCharge);
+      }
+      if (checkedItems.some((e) => e.value === "student-loan")) {
+        setWeaklyTaxableIncome(income + additionalCharge);
+      }
+
+      setFortnightlyTaxableIncome(income);
+      if (checkedItems.some((e) => e.value === "includes-superannuation")) {
+        setFortnightlyTaxableIncome(income + additionalCharge);
+      }
+      if (checkedItems.some((e) => e.value === "student-loan")) {
+        setFortnightlyTaxableIncome(income + additionalCharge);
+      }
+      setMonthlyTaxableIncome(Math.ceil(income * 2 - additionalCharge * 4));
+      if (checkedItems.some((e) => e.value === "includes-superannuation")) {
+        setMonthlyTaxableIncome(Math.ceil(((income * 2) / 100 / 7) * 30));
+      }
+      if (checkedItems.some((e) => e.value === "student-loan")) {
+        setMonthlyTaxableIncome(Math.ceil(((income * 32) / 100 / 7) * 30));
+      }
+
+      setAnnuallyTaxableIncome(income * 26 - additionalCharge * 26);
+
+      if (checkedItems.some((e) => e.value === "includes-superannuation")) {
+        setAnnuallyTaxableIncome(((income * 32) / 100) * 26);
+      }
+      if (checkedItems.some((e) => e.value === "student-loan")) {
+        setAnnuallyTaxableIncome(((income * 32) / 100) * 26);
+      }
+      setRenderMe(!renderMe);
     }
   };
+
+  console.log("outside f", dateType);
   return (
     <>
       <Container>
@@ -114,7 +161,7 @@ const DetailsCalc = () => {
               <Row>
                 <Col md={8} xs={12}>
                   <div className="income">
-                    <label>income: </label> <br />
+                    <label htmlFor="income">Income: </label> <br />
                     <input
                       type="number"
                       name="incomeInput"
@@ -125,20 +172,13 @@ const DetailsCalc = () => {
                 </Col>
                 <Col md={4} xs={12}>
                   <Form.Label>Per Cycle</Form.Label>
-                  <select onChange={(e) => setDateType(e.target.value)}>
+                  <select onChange={(e) => getData(e.target.value)}>
                     {dateTypes.map((data) => (
                       <option defaultValue={data.value} key={data.value}>
                         {data.value}
                       </option>
                     ))}
                   </select>
-                  {/* <Form.Select aria-label="Default select example">
-                    <option value="0">Annual </option>
-                    <option value="1">Monthly</option>
-                    <option value="2">Fortnightly</option>
-                    <option value="3">Weakly</option>
-                    <option value="4">Daily</option>
-                  </Form.Select> */}
                 </Col>
               </Row>
             </form>
@@ -168,7 +208,7 @@ const DetailsCalc = () => {
                   </Col>
                   <Col md={4}>
                     <div className="form-group">
-                      <label>Days</label>
+                      <label htmlFor="">Days</label>
                       <Form.Select aria-label="Default select example">
                         <option value="1">Days</option>
                         <option value="2">Hours</option>
@@ -177,7 +217,7 @@ const DetailsCalc = () => {
                   </Col>
                   <Col md={4}>
                     <div className="form-group">
-                      <label>Each</label>
+                      <label htmlFor="">Each</label>
                       <Form.Select aria-label="Default select example">
                         <option value="1">Week</option>
                         <option value="2">Fortnightly</option>
