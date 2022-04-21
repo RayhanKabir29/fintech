@@ -36,7 +36,7 @@ const DetailsCalc = () => {
   const [noTaxFree, setNoTaxFree] = useState(false);
   const [partTime, setPartTime] = useState(false);
 
-  const [income, setIncome] = useState();
+  const [income, setIncome] = useState(0);
   const [weaklyTaxableIncome, setWeaklyTaxableIncome] = useState(0);
   const [fortnightlyTaxableIncome, setFortnightlyTaxableIncome] = useState(0);
   const [monthlyTaxableIncome, setMonthlyTaxableIncome] = useState(0);
@@ -69,7 +69,7 @@ const DetailsCalc = () => {
     const checkedItems = optionCheck.filter((item) => item.isChecked === true);
     var additionalCharge = 0;
     checkedItems.forEach((el) => {
-      if (el.value === "includes-superannuation") {
+      if (el.value === "superannuation") {
         additionalCharge = (income * 10.5) / 100;
       }
       if (el.value === "student-loan") {
@@ -81,58 +81,58 @@ const DetailsCalc = () => {
       console.log("fun", dateType);
       setRenderMe(!renderMe);
 
-      if (checkedItems.some((e) => e.value === "includes-superannuation")) {
-        setWeaklyTaxableIncome(income + additionalCharge);
+      if (checkedItems.some((e) => e.value === "superannuation")) {
+        setWeaklyTaxableIncome(income / 1 - additionalCharge);
       }
       if (checkedItems.some((e) => e.value === "student-loan")) {
-        setWeaklyTaxableIncome(income+additionalCharge);
+        setWeaklyTaxableIncome(income/1 - additionalCharge);
       }
 
       setFortnightlyTaxableIncome(income * 2 - additionalCharge * 2);
-      if (checkedItems.some((e) => e.value === "includes-superannuation")) {
-        setFortnightlyTaxableIncome(income + additionalCharge);
+      if (checkedItems.some((e) => e.value === "superannuation")) {
+        setFortnightlyTaxableIncome(income - additionalCharge);
       }
       if (checkedItems.some((e) => e.value === "student-loan")) {
-        setFortnightlyTaxableIncome(income + additionalCharge);
+        setFortnightlyTaxableIncome(income/1 - additionalCharge);
       }
       setMonthlyTaxableIncome(
         Math.ceil((income / 7) * 30 - (additionalCharge / 7) * 30)
       );
-      if (checkedItems.some((e) => e.value === "includes-superannuation")) {
-        setMonthlyTaxableIncome(income + additionalCharge);
+      if (checkedItems.some((e) => e.value === "superannuation")) {
+        setMonthlyTaxableIncome(income/1 - additionalCharge);
       }
       if (checkedItems.some((e) => e.value === "student-loan")) {
-        setMonthlyTaxableIncome(income + additionalCharge);
+        setMonthlyTaxableIncome(income/1 - additionalCharge);
       }
 
       setAnnuallyTaxableIncome(income * 52 - additionalCharge * 52);
 
-      if (checkedItems.some((e) => e.value === "includes-superannuation")) {
-        setAnnuallyTaxableIncome(income + additionalCharge);
+      if (checkedItems.some((e) => e.value === "superannuation")) {
+        setAnnuallyTaxableIncome(income/1 - additionalCharge);
       }
       if (checkedItems.some((e) => e.value === "student-loan")) {
-        setAnnuallyTaxableIncome(income + additionalCharge);
+        setAnnuallyTaxableIncome(income/1 - additionalCharge);
       }
       setRenderMe(!renderMe);
     } else if (dateType === "Fortnight") {
       setWeaklyTaxableIncome(income / 2);
 
-      if (checkedItems.some((e) => e.value === "includes-superannuation")) {
-        setWeaklyTaxableIncome(income + additionalCharge);
+      if (checkedItems.some((e) => e.value === "superannuation")) {
+        setWeaklyTaxableIncome(income/1 - additionalCharge);
       }
       if (checkedItems.some((e) => e.value === "student-loan")) {
-        setWeaklyTaxableIncome(income + additionalCharge);
+        setWeaklyTaxableIncome(income/1 - additionalCharge);
       }
 
       setFortnightlyTaxableIncome(income);
-      if (checkedItems.some((e) => e.value === "includes-superannuation")) {
-        setFortnightlyTaxableIncome(income + additionalCharge);
+      if (checkedItems.some((e) => e.value === "superannuation")) {
+        setFortnightlyTaxableIncome(income/1 - additionalCharge);
       }
       if (checkedItems.some((e) => e.value === "student-loan")) {
-        setFortnightlyTaxableIncome(income + additionalCharge);
+        setFortnightlyTaxableIncome(income - additionalCharge);
       }
       setMonthlyTaxableIncome(Math.ceil(income * 2 - additionalCharge * 4));
-      if (checkedItems.some((e) => e.value === "includes-superannuation")) {
+      if (checkedItems.some((e) => e.value === "superannuation")) {
         setMonthlyTaxableIncome(Math.ceil(((income * 2) / 100 / 7) * 30));
       }
       if (checkedItems.some((e) => e.value === "student-loan")) {
@@ -141,7 +141,7 @@ const DetailsCalc = () => {
 
       setAnnuallyTaxableIncome(income * 26 - additionalCharge * 26);
 
-      if (checkedItems.some((e) => e.value === "includes-superannuation")) {
+      if (checkedItems.some((e) => e.value === "superannuation")) {
         setAnnuallyTaxableIncome(((income * 32) / 100) * 26);
       }
       if (checkedItems.some((e) => e.value === "student-loan")) {
